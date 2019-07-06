@@ -44,6 +44,8 @@ THIRD_PARTY_APPS = [
 ]
 
 CUSTOM_APPS = [
+    'students',
+    'fee',
 ]
 INSTALLED_APPS += THIRD_PARTY_APPS + CUSTOM_APPS
 
