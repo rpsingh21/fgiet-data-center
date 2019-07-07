@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from students.models import (
+    Branch,
+    Student,
+)
+
+
+admin.site.register(Branch)
+admin.site.register(Student)
