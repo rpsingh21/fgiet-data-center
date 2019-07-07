@@ -6,8 +6,9 @@ from accounts.models import Timestamp
 
 
 class Branch(Timestamp):
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, unique=True)
     hod = models.ForeignKey(User, on_delete=models.CASCADE)
+    total_semester = models.IntegerField()
 
     def __str__(self):
         return self.name
@@ -22,19 +23,19 @@ class Student(Timestamp):
     FEMALE = 'FEMALE'
     UNSPECIFIED = 'UNSPECIFIED'
     GENDER_CHOICES = (
-        (MALE,'Male'),
-        (FEMALE,'Female'),
-        (UNSPECIFIED,'Unspecified')
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+        (UNSPECIFIED, 'Unspecified'),
     )
     GEN = 'GEN'
     OBC = 'OBC'
     SC = 'SC'
     ST = 'ST'
     CATEGORY_CHOICES = (
-        (GEN,'Gen'),
-        (OBC,'OBC'),
-        (ST,'ST'),
-        (SC,'SC')
+        (GEN, 'Gen'),
+        (OBC, 'OBC'),
+        (ST, 'ST'),
+        (SC, 'SC'),
     )
     MODE_OF_ADMISSION = (
         ('vacant_seat', 'Vacant Seat'),
@@ -44,7 +45,7 @@ class Student(Timestamp):
         ('Lateral_entry', 'Lateral Entry'),
         ('FW', 'FW'),
         ('EWS', 'EWS'),
-        ('other', 'other')
+        ('other', 'other'),
     )
     roll_no = models.CharField(max_length=16, unique=True)
     name = models.CharField(max_length=64)
@@ -60,9 +61,32 @@ class Student(Timestamp):
     mother_mobile_no = models.CharField(max_length=10)
     email = models.EmailField(unique=True)
     addhar_no = models.CharField(max_length=16, unique=True)
-    mode_of_admission = models.CharField(max_length=16, choices=MODE_OF_ADMISSION)
-    mode_of_admission_category = models.CharField(max_length=16, choices=MODE_OF_ADMISSION_CATEGORY)
+    mode_of_admission = models.CharField(
+        max_length=16, choices=MODE_OF_ADMISSION
+    )
+    mode_of_admission_category = models.CharField(
+        max_length=16, choices=MODE_OF_ADMISSION_CATEGORY
+    )
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
+    is_verified = models.NullBooleanField()
 
     def __str__(self):
         return self.roll_no
+
+
+class Academic(models.Model):
+    HIGHSCHOOL = 'HighSchool'
+    INTERMEDIATE = 'Intermediate'
+    UGORDIPLOMA = 'UgOrDiploma'
+    ACADEMIC_TYPE = (
+        (HIGHSCHOOL, 'High School'),
+        (INTERMEDIATE, 'Intermediate'),
+        (UGORDIPLOMA, 'UgOrDiploma'),
+    )
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    board = models.CharField(max_length=256)
+    academic_type = models.CharField(max_length=16, choices=ACADEMIC_TYPE)
+    marks = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.student.name
