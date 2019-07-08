@@ -81,7 +81,7 @@ class Academic(models.Model):
     ACADEMIC_TYPE = (
         (HIGHSCHOOL, 'High School'),
         (INTERMEDIATE, 'Intermediate'),
-        (UGORDIPLOMA, 'UgOrDiploma'),
+        (UGORDIPLOMA, 'Ug or Diploma'),
     )
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     board = models.CharField(max_length=256)
