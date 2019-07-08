@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from semesters.models import Semester
+
+admin.site.register(Semester)
