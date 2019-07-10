@@ -1,1 +1,1 @@
-# fgiet-data-center [![Build Status](https://travis-ci.org/rpsingh21/fgiet-data-center.svg?branch=master)](https://travis-ci.org/rpsingh21/fgiet-data-center)
+# fgiet-data-center [![Build Status](https://travis-ci.org/rpsingh21/fgiet-data-center.svg?branch=master)](https://travis-ci.org/rpsingh21/fgiet-data-center) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/rpsingh21/fgiet-data-center/pulls)
