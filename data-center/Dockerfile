@@ -1,16 +1,8 @@
 FROM node:10-slim
-
-# RUN npm install -g create-react-app
-# RUN mkdir /app
-# WORKDIR /app
-# COPY . /app/
-# EXPOSE 3000
-# RUN npm install
-# CMD [ "npm", "start" ]
-
+RUN mkdir /code
 WORKDIR /code/
-COPY package.json .
+COPY package.json /code/
 RUN npm install
-COPY . .
+COPY . /code/
 EXPOSE 3000
 CMD [ "npm", "start" ]
