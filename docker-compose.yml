@@ -16,7 +16,7 @@ services:
     build:
       context: data-center/.
     volumes:
-      - .:/app
+      - .:/code
     ports:
       - "3000:3000"
-    command: npm start --prefix=../app/data-center/
+    command: npm start
