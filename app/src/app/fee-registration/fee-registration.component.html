@@ -1,0 +1,202 @@
+<div class="container my-5">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th colspan="4">ROll No</th>
+                <td colspan="10">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.roll_no">
+                </td>
+                <td colspan="2" rowspan="5" class="w-25">
+                    <img class="img-fluid" style="width: -webkit-fill-available;"
+                        src="https://image.shutterstock.com/image-vector/avatar-profile-picture-icon-set-260nw-629394953.jpg"
+                        alt="user image">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4" class="w-18">Name</th>
+                <td colspan="10">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.name">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Father Name</th>
+                <td colspan="10">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.father_name">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Mother Name</th>
+                <td colspan="10">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.mother_name">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Mother Name</th>
+                <td colspan="10">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.mother_name">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Date of Birth</th>
+                <td colspan="10">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.dob">
+                </td>
+                <td>
+                    <input type="file" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="18"> details </td>
+            </tr>
+            <tr>
+                <th colspan="2">Adress</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.address">
+                </td>
+                <th colspan="2" class="w-20">Branch</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.branch">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Gender</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.gender">
+                </td>
+                <th colspan="2">Category</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.category">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Sub Category</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.sub_category">
+                </td>
+                <th colspan="2">Mobile No</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.mobile_no">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Father Mobile No</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.father_mobile_no">
+                </td>
+                <th colspan="2">Mother Mobile No</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.mother_mobile_no">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Email Id</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.email">
+                </td>
+                <th colspan="2">Addhar No</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.addhar_no">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Mode of Admission</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.mode_of_admission">
+                </td>
+                <th colspan="2">Admission Category</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.mode_of_admission_category">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Branch</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.branch">
+                </td>
+                <th colspan="2">Category</th>
+                <td colspan="6">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.category">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="16">academic details</td>
+            </tr>
+            <tr>
+                <th colspan="4">Type</th>
+                <th colspan="6">Bord</th>
+                <th colspan="6">Marks</th>
+            </tr>
+            <tr *ngFor="let item of data.academics">
+                <th colspan="4">{{ item.text }}</th>
+                <td colspan="6">
+                    <input [(ngModel)]="item.marks" type="text" class="form-control">
+                </td>
+                <td colspan="6">
+                    <input [(ngModel)]="item.marks" type="text" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="16"> Semester details</th>
+            </tr>
+            <tr>
+                <td colspan="16">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>#</th>
+                                <th *ngFor="let semester of data.semesters">
+                                    Semester-{{ semester.semester }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Your Marks</th>
+                                <td *ngFor="let semester of data.semesters">
+                                    <input [(ngModel)]="semester.marks" type="text" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Total Marks</th>
+                                <td *ngFor="let semester of data.semesters">
+                                    <input [(ngModel)]="semester.total_marks" type="text" class="form-control">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="16">Fee Details</td>
+            </tr>
+            <tr>
+                <th colspan="4">Year</th>
+                <td colspan="4">
+                    <input [(ngModel)]="data.fee.year" type="text" class="form-control">
+                </td>
+                <th colspan="4">Fee Type</th>
+                <td colspan="4">
+                    <input [(ngModel)]="data.fee.fee_type" type="text" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Mode of Payment</th>
+                <td colspan="4">
+                    <input [(ngModel)]="data.fee.mode_of_payment" type="text" class="form-control">
+                </td>
+                <th colspan="4">Amount</th>
+                <td colspan="4">
+                    <input [(ngModel)]="data.fee.amount" type="text" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Transfer Id</th>
+                <td colspan="4">
+                    <input [(ngModel)]="data.fee.transfer_id" type="text" class="form-control">
+                </td>
+                <th colspan="4">Date</th>
+                <td colspan="4">
+                    <input [(ngModel)]="data.fee.date" type="date" class="form-control">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

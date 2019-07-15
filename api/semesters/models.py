@@ -8,7 +8,7 @@ class Semester(Timestamp):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     total_marks = models.IntegerField()
     marks = models.IntegerField()
-    year = models.IntegerField()
+    semester = models.IntegerField()
 
     def __str__(self):
         return self.student.name
