@@ -14,9 +14,9 @@ services:
       - db
   app:
     build:
-      context: data-center/.
+      context: app/.
     volumes:
-      - .:/code
+      - ./app:/code
     ports:
-      - "3000:3000"
+      - "4200:4200"
     command: npm start
