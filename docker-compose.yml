@@ -3,11 +3,13 @@ version: '3'
 services:
   db:
     image: postgres:11-alpine
+    volumes:
+     - database_data:/var/lib/postgresql/data
   api:
     build: api/.
-    command: python api/manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - ./api:/code
     ports:
       - "8000:8000"
     depends_on:
@@ -20,3 +22,7 @@ services:
     ports:
       - "4200:4200"
     command: npm start
+
+volumes:
+  database_data:
+    driver: local
