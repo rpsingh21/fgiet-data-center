@@ -90,3 +90,8 @@ class Academic(models.Model):
 
     def __str__(self):
         return self.student.name
+
+
+class Document(models.Model):
+    upload = models.FileField()
+    uploaded_at = models.DateTimeField(auto_now_add=True)

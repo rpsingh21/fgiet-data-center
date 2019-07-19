@@ -11,7 +11,7 @@ import { ApiService } from '../api.service'
     styleUrls: ['./fee-registration.component.scss']
 })
 export class FeeRegistrationComponent implements OnInit {
-
+    objectKeys = Object.keys;
     data = {
         basic: { },
         academics: [{

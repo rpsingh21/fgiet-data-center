@@ -44,5 +44,9 @@ class FormDetails(APIView):
             'admission_category': dict(sm.Student.MODE_OF_ADMISSION_CATEGORY),
             'academic_type': dict(sm.Academic.ACADEMIC_TYPE),
             'fee_type': dict(Fee.FEE_TYPE),
+            'branch': dict(sm.Branch.objects.values_list('id', 'name')),
+            'year': [1, 2, 3, 4],
+            'gender': dict(sm.Student.GENDER_CHOICES),
+            'mode_of_payment': dict(Fee.PAYMENT_TYPE),
         }
         return Response(data, status=status.HTTP_200_OK)

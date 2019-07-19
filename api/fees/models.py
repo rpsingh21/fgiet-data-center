@@ -15,10 +15,11 @@ class Fee(Timestamp):
         (HOSTEL, HOSTEL),
         (BOTH, BOTH),
     )
+    PAYMENT_TYPE = [(i, i) for i in 'RTGS,NIFT,ONLINE,CHALLAN'.split(',')]
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     year = models.IntegerField()
     fee_type = models.CharField(max_length=32, choices=FEE_TYPE)
-    payment_type = models.CharField(max_length=16)
+    mode_of_payment = models.CharField(max_length=16, choices=PAYMENT_TYPE)
     challan_no = models.CharField(max_length=16)
     total_fee = models.IntegerField()
     amount = models.IntegerField()

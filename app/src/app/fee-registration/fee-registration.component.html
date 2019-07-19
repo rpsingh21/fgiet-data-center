@@ -62,17 +62,29 @@
                 </td>
                 <th colspan="2" class="w-20">Branch</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.branch">
+                    <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.basic.branch">
+                        <option *ngFor="let key of objectKeys(optionsData.branch)" [value]="key">
+                            {{ optionsData.branch[key] }}
+                        </option>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th colspan="2">Gender</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.gender">
+                    <select *ngIf="optionsData?.gender" class="form-control" [(ngModel)]="data.basic.gender">
+                        <option *ngFor="let key of objectKeys(optionsData.gender)" [value]="key">
+                            {{ optionsData.gender[key] }}
+                        </option>
+                    </select>
                 </td>
                 <th colspan="2">Category</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.category">
+                    <select *ngIf="optionsData?.category" class="form-control" [(ngModel)]="data.basic.category">
+                        <option *ngFor="let key of objectKeys(optionsData.category)" [value]="key">
+                            {{ optionsData.category[key] }}
+                        </option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -108,21 +120,21 @@
             <tr>
                 <th colspan="2">Mode of Admission</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.mode_of_admission">
+                    <select *ngIf="optionsData?.mode_of_admission" class="form-control"
+                        [(ngModel)]="data.basic.mode_of_admission">
+                        <option *ngFor="let key of objectKeys(optionsData.mode_of_admission)" [value]="key">
+                            {{ optionsData.mode_of_admission[key] }}
+                        </option>
+                    </select>
                 </td>
                 <th colspan="2">Admission Category</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.mode_of_admission_category">
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2">Branch</th>
-                <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.branch">
-                </td>
-                <th colspan="2">Category</th>
-                <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.category">
+                    <select *ngIf="optionsData?.admission_category" class="form-control"
+                        [(ngModel)]="data.basic.admission_category">
+                        <option *ngFor="let key of objectKeys(optionsData.admission_category)" [value]="key">
+                            {{ optionsData.admission_category[key] }}
+                        </option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -183,17 +195,41 @@
             <tr>
                 <th colspan="4">Year</th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.year" type="text" class="form-control">
+                    <!-- <input [(ngModel)]="data.fee.year" type="text" class="form-control"> -->
+                    <select *ngIf="optionsData?.year" class="form-control" [(ngModel)]="data.fee.year">
+                        <option *ngFor="let key of optionsData.year" [value]="key">
+                            {{ key }}
+                        </option>
+                    </select>
                 </td>
                 <th colspan="4">Fee Type</th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.fee_type" type="text" class="form-control">
+                    <select *ngIf="optionsData?.fee_type" class="form-control" [(ngModel)]="data.fee.fee_type">
+                        <option *ngFor="let key of objectKeys(optionsData.fee_type)" [value]="key">
+                            {{ optionsData.fee_type[key] }}
+                        </option>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th colspan="4">Mode of Payment</th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.mode_of_payment" type="text" class="form-control">
+                    <div class="form-row">
+                        <div [ngClass]="{
+                            'form-group col-md-12': data.fee.mode_of_payment!='CHALLAN',
+                            'form-group col-md-5': data.fee.mode_of_payment=='CHALLAN'}">
+                            <select *ngIf="optionsData?.mode_of_payment" class="form-control"
+                                [(ngModel)]="data.fee.mode_of_payment">
+                                <option *ngFor="let key of objectKeys(optionsData.mode_of_payment)" [value]="key">
+                                    {{ optionsData.mode_of_payment[key] }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-7" *ngIf="data.fee.mode_of_payment=='CHALLAN'">
+                            <input [(ngModel)]="data.fee.challan_no" type="text" class="form-control"
+                                placeholder="Challan no">
+                        </div>
+                    </div>
                 </td>
                 <th colspan="4">Amount</th>
                 <td colspan="4">
