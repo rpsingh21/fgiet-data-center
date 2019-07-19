@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
+    'storages',
 ]
 
 CUSTOM_APPS = [
@@ -132,13 +134,38 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/static/'
-
-
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:4200",
     "http://127.0.0.1:4200",
 ]
+
+# AWS SETTINGS
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_STATIC_LOCATION = 'static'
+AWS_DEFAULT_ACL = None
+AWS_PRELOAD_METADATA = True
+AWS_QUERYSTRING_AUTH = True
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+STATICFILES_STORAGE = 'api.storage_backends.StaticRootS3BotoStorage'
+
+AWS_MEDIA_LOCATION = 'media'
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
+MEDIA_ROOT = MEDIA_URL
+DEFAULT_FILE_STORAGE = 'api.storage_backends.MediaRootS3BotoStorage'
+
+two_months = datetime.timedelta(days=61)
+date_two_months_later = datetime.date.today() + two_months
+expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
+
+AWS_HEADERS = {
+    'Expires': expires,
+    'Cache-Control': 'max-age=%d' % (int(two_months.total_seconds()), ),
+}
