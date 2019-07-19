@@ -13,7 +13,9 @@ import { ApiService } from '../api.service'
 export class FeeRegistrationComponent implements OnInit {
     objectKeys = Object.keys;
     data = {
-        basic: { },
+        basic: {
+            image: 'https://image.shutterstock.com/image-vector/avatar-profile-picture-icon-set-260nw-629394953.jpg',
+        },
         academics: [{
                 academic_type: 'HighSchool',
                 text: 'High School'
@@ -42,9 +44,19 @@ export class FeeRegistrationComponent implements OnInit {
             });
         }
         this.api.get('fee/form-details').subscribe((res:any) => {
-            console.log(res);
             this.optionsData = res;
         })
+    }
+
+    onUpload(event){
+        if (event.target.files.length > 0) {
+            const formData = new FormData();
+            const file = event.target.files[0];
+            formData.append('upload', file);
+            this.api.post('student/upload', formData).subscribe((res:any)=>{
+                this.data.basic.image = res.upload;
+            })
+        }
     }
 
     onSumitForm() {

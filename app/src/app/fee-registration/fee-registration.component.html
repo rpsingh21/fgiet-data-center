@@ -13,8 +13,7 @@
                 </td>
                 <td colspan="2" rowspan="5" class="w-25">
                     <img class="img-fluid" style="width: -webkit-fill-available;"
-                        src="https://image.shutterstock.com/image-vector/avatar-profile-picture-icon-set-260nw-629394953.jpg"
-                        alt="user image">
+                        [src]="data.basic.image" alt="user image">
                 </td>
             </tr>
             <tr>
@@ -47,7 +46,7 @@
                     <input type="text" class="form-control" [(ngModel)]="data.basic.dob">
                 </td>
                 <td>
-                    <input type="file" />
+                    <input type="file" name="image" (change)="onUpload($event)"/>
                 </td>
             </tr>
             <tr>

@@ -49,6 +49,7 @@ class Student(Timestamp):
     )
     roll_no = models.CharField(max_length=16, unique=True)
     name = models.CharField(max_length=64)
+    image = models.URLField()
     father_name = models.CharField(max_length=64)
     mother_name = models.CharField(max_length=64)
     dob = models.DateField()
