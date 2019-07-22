@@ -60,7 +60,14 @@ export class FeeRegistrationComponent implements OnInit {
     }
 
     onSumitForm() {
-        console.log(this.data);
+        // console.log(this.data);
+        this.api.post('fee/', this.data).subscribe((res: any)=>{
+            console.log(res);
+        }, (error: any)=>{
+            console.log(error)
+        }, ( )=> {
+
+        })
     }
 
 }

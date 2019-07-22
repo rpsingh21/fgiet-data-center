@@ -23,15 +23,16 @@ class FeeRegisterAPIView(APIView):
             serializer = FeeSerializer(instance, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request):
+    def post(self, request, format=None):
+        # import pdb; pdb.set_trace()
         serializer = FeeRegisterFormSerializer(
             data=request.data,
             context={'request': request}
         )
         if serializer.is_valid():
-            # serializer.save()
-            response = serializer.data
-            return Response(response, status=status.HTTP_201_CREATED)
+            serializer.save()
+            # response = serializer.data
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

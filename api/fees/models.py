@@ -20,7 +20,7 @@ class Fee(Timestamp):
     year = models.IntegerField()
     fee_type = models.CharField(max_length=32, choices=FEE_TYPE)
     mode_of_payment = models.CharField(max_length=16, choices=PAYMENT_TYPE)
-    challan_no = models.CharField(max_length=16)
+    challan_no = models.CharField(max_length=16, blank=True)
     total_fee = models.IntegerField()
     amount = models.IntegerField()
     fee_transfer_id = models.CharField(max_length=32)

@@ -6,7 +6,7 @@ from .models import Student, Academic, Document
 class AcademicModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Academic
-        fields = '__all__'
+        fields = ['academic_type', 'board', 'marks']
 
 
 class StudentModelSerializer(serializers.ModelSerializer):

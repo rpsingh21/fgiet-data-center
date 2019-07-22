@@ -55,7 +55,7 @@ class Student(Timestamp):
     dob = models.DateField()
     gender = models.CharField(max_length=16, choices=GENDER_CHOICES)
     category = models.CharField(max_length=16, choices=CATEGORY_CHOICES)
-    sub_category = models.CharField(max_length=16)
+    sub_category = models.CharField(max_length=16, blank=True)
     address = models.TextField()
     mobile_no = models.CharField(max_length=10)
     father_mobile_no = models.CharField(max_length=10)
@@ -96,3 +96,6 @@ class Academic(models.Model):
 class Document(models.Model):
     upload = models.FileField()
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.upload.name
