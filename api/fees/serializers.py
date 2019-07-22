@@ -61,6 +61,11 @@ class FeeRegisterTableSerializer(serializers.ModelSerializer):
     class Meta:
         model = FeeRegister
         fields = [
+            'form_id',
+            'roll_no',
+            'is_verified',
+            'session',
             'basic',
             'fee',
+            'created_at',
         ]

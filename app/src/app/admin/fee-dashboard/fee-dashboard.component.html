@@ -1,38 +1,42 @@
 <div class="container">
-    <table>
-        <thead>
-            <tr>
-                <td> Form No. </td>
-                <td> Name </td>
-                <td> Email </td>
-                <td> Year </td>
-                <td> Branch</td>
-                <td> Mod of Payment</td>
-                <td> Amount </td>
-                <td> Approval Status </td>
-                <td> Total Amount </td>
-                <td> Fee Type </td>
-                <td> Transfer Id </td>
-                <td> Date </td>
-                <td>Registration Date </td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td> Form No. </td>
-                <td> Name </td>
-                <td> Email </td>
-                <td> Year </td>
-                <td> Branch</td>
-                <td> Mod of Payment</td>
-                <td> Amount </td>
-                <td> Approval Status </td>
-                <td> Total Amount </td>
-                <td> Fee Type </td>
-                <td> Transfer Id </td>
-                <td> Date </td>
-                <td>Registration Date </td>
-            </tr>
-        </tbody>
-    </table>
+    <div *ngIf="data.length">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> Form No. </th>
+                    <th> Session </th>
+                    <th> Name </th>
+                    <th> Roll No. </th>
+                    <th> Year </th>
+                    <th> Branch</th>
+                    <th> Mod of Payment</th>
+                    <th> Fee Type </th>
+                    <th> Amount </th>
+                    <th> Total Amount </th>
+                    <th> Transfer Id </th>
+                    <th> Transfer Date </th>
+                    <th> Registration Date </th>
+                    <th> Approval Status </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data">
+                    <td> {{ item.form_id }} </td>
+                    <td> {{ item.session }}</td>
+                    <td> {{ item.name }} </td>
+                    <td> {{ item.roll_no }} </td>
+                    <td> {{ item.year }} </td>
+                    <td> {{ item.branch }}</td>
+                    <td> {{ item.mode_of_payment }} </td>
+                    <td> {{ item.fee_type }}</td>
+                    <td> {{ item.amount }} </td>
+                    <td> {{ item.total_fee }} </td>
+                    <td> {{ item.transfer_id }} </td>
+                    <td> {{ item.transfer_date |  date }} </td>
+                    <td> {{ item.registration_datetime | date:'medium' }} </td>
+                    <td> {{ item.is_verified }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
