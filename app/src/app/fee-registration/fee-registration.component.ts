@@ -41,7 +41,7 @@ export class FeeRegistrationComponent implements OnInit {
                 semester: i,
             });
         }
-        this.api.get('fee/details/11').subscribe((res:any)=>{
+        this.api.get('fee/details/16').subscribe((res:any)=>{
             this.data = res.details;
         })
         this.api.get('fee/form-details').subscribe((res:any) => {

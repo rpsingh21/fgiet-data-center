@@ -52,3 +52,15 @@ class FeeRegisterFormSerializer(serializers.Serializer):
             details=details,
         )
         return save_data
+
+
+class FeeRegisterTableSerializer(serializers.ModelSerializer):
+    basic = serializers.DictField(source='details.basic')
+    fee = serializers.DictField(source='details.fee')
+
+    class Meta:
+        model = FeeRegister
+        fields = [
+            'basic',
+            'fee',
+        ]

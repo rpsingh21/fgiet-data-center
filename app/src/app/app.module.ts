@@ -10,6 +10,8 @@ import { FeeRegistrationComponent } from './fee-registration/fee-registration.co
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FeeFormDetailComponent } from './fee-form-detail/fee-form-detail.component';
+import { FeeDashboardComponent } from './admin/fee-dashboard/fee-dashboard.component';
+import { LoginComponent } from './admin/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FeeFormDetailComponent } from './fee-form-detail/fee-form-detail.compon
     FeeRegistrationComponent,
     HomeComponent,
     HeaderComponent,
-    FeeFormDetailComponent
+    FeeFormDetailComponent,
+    FeeDashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
