@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { FeeRegistrationComponent } from './fee-registration/fee-registration.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { FeeFormDetailComponent } from './fee-form-detail/fee-form-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FeeRegistrationComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    FeeFormDetailComponent
   ],
   imports: [
     BrowserModule,

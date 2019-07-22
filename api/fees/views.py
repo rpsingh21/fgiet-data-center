@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -6,13 +7,13 @@ from .models import FeeRegister, Fee
 from students import models as sm
 from .serializers import (
     FeeSerializer,
-    # FeeRegisterSerializer,
+    FeeRegisterSerializer,
     FeeRegisterFormSerializer
 )
 
 
 class FeeRegisterAPIView(APIView):
-    serializer_class = FeeRegisterFormSerializer
+    # serializer_class = FeeRegisterFormSerializer
 
     def get(self, request, id=None):
         if id:
@@ -30,9 +31,9 @@ class FeeRegisterAPIView(APIView):
             context={'request': request}
         )
         if serializer.is_valid():
-            serializer.save()
-            # response = serializer.data
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            instance = serializer.save()
+            response = FeeRegisterSerializer(instance).data
+            return Response(response, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -51,3 +52,9 @@ class FormDetails(APIView):
             'mode_of_payment': dict(Fee.PAYMENT_TYPE),
         }
         return Response(data, status=status.HTTP_200_OK)
+
+
+class FeeRetrieveAPIView(RetrieveAPIView):
+    serializer_class = FeeRegisterSerializer
+    lookup_field = 'id'
+    queryset = FeeRegister.objects.all()

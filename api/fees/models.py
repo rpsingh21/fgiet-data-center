@@ -23,7 +23,7 @@ class Fee(Timestamp):
     challan_no = models.CharField(max_length=16, blank=True)
     total_fee = models.IntegerField()
     amount = models.IntegerField()
-    fee_transfer_id = models.CharField(max_length=32)
+    transfer_id = models.CharField(max_length=32)
     transfer_date = models.DateField()
     account_officer = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -37,7 +37,7 @@ class FeeRegister(Timestamp):
     roll_no = models.CharField(max_length=16)
     email = models.EmailField()
     details = JSONField()
-    is_verified = models.CharField(max_length=16, choices=STATUS, default=1)
+    is_verified = models.CharField(max_length=16, choices=STATUS, default=0)
 
     def __str__(self):
         return self.roll_no

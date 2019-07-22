@@ -1,9 +1,7 @@
-import {
-    Component,
-    OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../api.service'
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'app-fee-registration',
@@ -14,7 +12,7 @@ export class FeeRegistrationComponent implements OnInit {
     objectKeys = Object.keys;
     data = {
         basic: {
-            image: 'https://image.shutterstock.com/image-vector/avatar-profile-picture-icon-set-260nw-629394953.jpg',
+            image: 'https://fgiet.s3.amazonaws.com/media/passport.jpg',
         },
         academics: [{
                 academic_type: 'HighSchool',
@@ -35,7 +33,7 @@ export class FeeRegistrationComponent implements OnInit {
 
     optionsData: any;
 
-    constructor(private api: ApiService) {}
+    constructor(private api: ApiService, private router: Router) {}
 
     ngOnInit() {
         for (let i = 1; i < 9; i++) {
@@ -43,6 +41,9 @@ export class FeeRegistrationComponent implements OnInit {
                 semester: i,
             });
         }
+        this.api.get('fee/details/11').subscribe((res:any)=>{
+            this.data = res.details;
+        })
         this.api.get('fee/form-details').subscribe((res:any) => {
             this.optionsData = res;
         })
@@ -60,11 +61,10 @@ export class FeeRegistrationComponent implements OnInit {
     }
 
     onSumitForm() {
-        // console.log(this.data);
         this.api.post('fee/', this.data).subscribe((res: any)=>{
-            console.log(res);
+            this.router.navigate(['fee', 'details', res.id]);
         }, (error: any)=>{
-            console.log(error)
+            console.log(error);
         }, ( )=> {
 
         })

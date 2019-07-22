@@ -10,8 +10,6 @@ class AcademicModelSerializer(serializers.ModelSerializer):
 
 
 class StudentModelSerializer(serializers.ModelSerializer):
-    academic_set = AcademicModelSerializer(many=True)
-
     class Meta:
         model = Student
         fields = '__all__'

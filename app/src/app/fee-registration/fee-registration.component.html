@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <th colspan="4">Address</th>
-                <td colspan="6">
+                <td colspan="10">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.address">
                 </td>
             </tr>
@@ -200,8 +200,8 @@
                         </option>
                     </select>
                 </td>
-                <th colspan="2" class="w-20">Branch</th>
-                <td colspan="6">
+                <th colspan="4" class="w-20">Branch</th>
+                <td colspan="4">
                     <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.fee.branch">
                         <option *ngFor="let key of objectKeys(optionsData.branch)" [value]="key">
                             {{ optionsData.branch[key] }}
@@ -243,9 +243,9 @@
                         </option>
                     </select>
                 </td>
-                <th colspan="2">Total Fee</th>
-                <td colspan="6">
-                    <input [(ngModel)]="data.fee.amount" type="text" class="form-control"> 
+                <th colspan="4">Total Fee</th>
+                <td colspan="4">
+                    <input [(ngModel)]="data.fee.total_fee" type="text" class="form-control"> 
                 </td>
             </tr>
             <tr>
@@ -255,7 +255,7 @@
                 </td>
                 <th colspan="4">Date</th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.date" type="date" class="form-control">
+                    <input [(ngModel)]="data.fee.transfer_date" type="date" class="form-control">
                 </td>
             </tr>
         </tbody>

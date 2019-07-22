@@ -1,0 +1,170 @@
+<div class="container my-5">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th class="text-success center" colspan="16">
+                    Basic Details
+                </th>
+            </tr>
+            <tr>
+                <th colspan="4">Roll No</th>
+                <td colspan="10">{{ data.basic.roll_no }} </td>
+                <td colspan="2" rowspan="5" class="w-25">
+                    <img class="img-fluid" style="width: -webkit-fill-available;"
+                        [src]="data.basic.image" alt="user image">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4" class="w-18">Name</th>
+                <td colspan="10">{{ data.basic.name }}</td>
+            </tr>
+            <tr>
+                <th colspan="4">Father Name</th>
+                <td colspan="10">{{ data.basic.father_name }}</td>
+            </tr>
+            <tr>
+                <th colspan="4">Mother Name</th>
+                <td colspan="10">{{ data.basic. mother_name }}</td>
+            </tr>
+            <tr>
+                <th colspan="4">Address</th>
+                <td colspan="10">{{ data.basic.address }}</td>
+            </tr>
+            <tr>
+                <th colspan="4">Date of Birth</th>
+                <td colspan="10">{{ data.basic.dob }}</td>
+                <td>
+                    <!-- <input type="file" name="image" (change)="onUpload($event)"/> -->
+                </td>
+            </tr>
+            <tr>
+                <th colspan="16" class="center text-success">
+                    Other Details
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">year</th>
+                <td colspan="6">{{ data.basic.year }}</td>
+                <th colspan="2" class="w-20">Branch</th>
+                <td colspan="6">{{ data.basic.branch }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">Gender</th>
+                <td colspan="6">{{ data.basic.gender }}</td>
+                <th colspan="2">Category</th>
+                <td colspan="6">{{ data.basic.category }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">Sub Category</th>
+                <td colspan="6">{{ data.basic.sub_category }}</td>
+                <th colspan="2">Mobile No</th>
+                <td colspan="6">{{ data.basic.mobile_no }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">Father Mobile No</th>
+                <td colspan="6">{{ data.basic.father_mobile_no }}</td>
+                <th colspan="2">Mother Mobile No</th>
+                <td colspan="6">{{ data.basic.mother_mobile_no }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">Email Id</th>
+                <td colspan="6">{{ data.basic.email }}</td>
+                <th colspan="2">Addhar No</th>
+                <td colspan="6">{{ data.basic.addhar_no }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">Mode of Admission</th>
+                <td colspan="6">{{ data.basic.mode_of_admission }}</td>
+                <th colspan="2">Admission Category</th>
+                <td colspan="6">{{ data.basic.mode_of_admission_category }}</td>
+            </tr>
+            <tr>
+                <th colspan="16" class="text-success center">
+                    Academic Details
+                </th>
+            </tr>
+            <tr>
+                <th colspan="4">Type</th>
+                <th colspan="6">Bord</th>
+                <th colspan="6">Marks</th>
+            </tr>
+            <tr *ngFor="let item of data?.academics">
+                <th colspan="4">{{ item.text }}</th>
+                <td colspan="6">{{ item.board }}</td>
+                <td colspan="6">{{ item.marks }}</td>
+            </tr>
+            <tr>
+                <th colspan="16" class="text-success center">
+                    Semester Details
+                </th>
+            </tr>
+            <tr>
+                <td colspan="16">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>#</th>
+                                <th *ngFor="let semester of data?.semesters">
+                                    Semester - {{ semester.semester }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Your Marks</th>
+                                <td *ngFor="let semester of data?.semesters">{{ semester.marks }}</td>
+                            </tr>
+                            <tr>
+                                <th>Total Marks</th>
+                                <td *ngFor="let semester of data?.semesters">{{ semester.total_marks }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="16" class="center text-success">
+                    Fee Details
+                </th>
+            </tr>
+            <tr>
+                <th colspan="4">Year</th>
+                <td colspan="4">{{ data.fee.year }}</td>
+                <th colspan="4" class="w-20">Branch</th>
+                <td colspan="4">{{ data.fee.branch }}</td>
+            </tr>
+            <tr>
+                <th colspan="4">Mode of Payment</th>
+                <td colspan="4">
+                    <div class="form-row">
+                        <div [ngClass]="{
+                            'form-group col-md-12': data.fee.mode_of_payment!='CHALLAN',
+                            'form-group col-md-5': data.fee.mode_of_payment=='CHALLAN'}">
+                            {{ data.fee.mode_of_payment }}
+                        </div>
+                        <div class="form-group col-md-7" *ngIf="data.fee.mode_of_payment=='CHALLAN'">
+                            {{ data.fee.challan_no }}
+                        </div>
+                    </div>
+                </td>
+                <th colspan="4">Amount</th>
+                <td colspan="4">{{ data.fee.amount }}</td>
+            </tr>
+            <tr>
+                <th colspan="4">Fee Type</th>
+                <td colspan="4">{{ data.fee.fee_type }}</td>
+                <th colspan="4">Total Fee</th>
+                <td colspan="4">{{ data.fee.total_fee }}</td>
+            </tr>
+            <tr>
+                <th colspan="4">Transfer Id</th>
+                <td colspan="4">{{ data.fee.transfer_id }}</td>
+                <th colspan="4">Date</th>
+                <td colspan="4">{{ data.fee.transfer_date }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="center">
+        <button (click)="onSumitForm()" class="btn btn-primary">
+            <b class="mx-5">Submit</b>
+        </button>
+    </div>
+</div>

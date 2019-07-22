@@ -21,7 +21,7 @@ class FeeSerializer(serializers.ModelSerializer):
             'challan_no',
             'total_fee',
             'amount',
-            'fee_transfer_id',
+            'transfer_id',
             'transfer_date',
         ]
 
@@ -37,3 +37,18 @@ class FeeRegisterFormSerializer(serializers.Serializer):
     semesters = SemesterSerializer(many=True)
     academics = AcademicModelSerializer(many=True)
     fee = FeeSerializer()
+
+    class Meta:
+        fields = '__all__'
+
+    def create(self, validated_data):
+        basic_details = validated_data.get('basic')
+        roll_no = basic_details.get('roll_no')
+        email = basic_details.get('email')
+        details = self.context.get('request').data
+        save_data = FeeRegister.objects.create(
+            roll_no=roll_no,
+            email=email,
+            details=details,
+        )
+        return save_data
