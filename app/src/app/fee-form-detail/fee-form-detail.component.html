@@ -11,7 +11,8 @@
                 <td colspan="10">{{ data.basic.roll_no }} </td>
                 <td colspan="2" rowspan="5" class="w-25">
                     <img class="img-fluid" style="width: -webkit-fill-available;"
-                        [src]="data.basic.image" alt="user image">
+                        [src]="data.basic.image? data.basic.image: 'https://fgiet.s3.amazonaws.com/media/passport.jpg'"
+                        alt="user image">
                 </td>
             </tr>
             <tr>

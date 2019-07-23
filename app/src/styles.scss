@@ -4,3 +4,9 @@
 .center {
     text-align: center;
 }
+
+@media print {
+    .doNotPrint {
+        display: none !important;
+    }
+}
