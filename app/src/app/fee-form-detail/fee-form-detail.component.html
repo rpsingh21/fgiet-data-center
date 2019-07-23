@@ -94,14 +94,14 @@
                 <td colspan="6">{{ item.board }}</td>
                 <td colspan="6">{{ item.marks }}</td>
             </tr>
-            <tr>
+            <tr *ngIf="is_semester">
                 <th colspan="16" class="text-success center">
                     Semester Details
                 </th>
             </tr>
-            <tr>
+            <tr *ngIf="is_semester">
                 <td colspan="16">
-                    <table>
+                    <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <th>#</th>

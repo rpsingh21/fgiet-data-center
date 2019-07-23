@@ -12,6 +12,7 @@ import { fee_form } from "../data";
 export class FeeFormDetailComponent implements OnInit {
     data = fee_form;
     form_id: String;
+    is_semester = true;
 
     constructor(private api: ApiService, private route: ActivatedRoute) {}
 
@@ -20,6 +21,7 @@ export class FeeFormDetailComponent implements OnInit {
         this.api.get(`fee/details/${this.form_id}`).subscribe((res: any) => {
             this.data = res.details;
             this.form_id = res.id;
+            this.is_semester = this.data.semesters.length > 0;
         });
     }
 }

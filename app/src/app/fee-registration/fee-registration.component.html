@@ -80,7 +80,8 @@
             <tr>
                 <th colspan="2" class="w-20">Branch</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.basic.branch">
+                    <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.basic.branch"
+                        (change)="change_semester_table()">
                         <option *ngFor="let key of objectKeys(optionsData.branch)" [value]="key">
                             {{ optionsData.branch[key] }}
                         </option>
@@ -91,7 +92,8 @@
                 </td>
                 <th colspan="2">year</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.year" class="form-control" [(ngModel)]="data.basic.year">
+                    <select *ngIf="optionsData?.year" class="form-control" [(ngModel)]="data.basic.year"
+                        (change)="change_semester_table()">
                         <option *ngFor="let key of optionsData.year" [value]="key">
                             {{ key }}
                         </option>
@@ -186,7 +188,7 @@
                 <th colspan="2">Admission Category</th>
                 <td colspan="6">
                     <select *ngIf="optionsData?.admission_category" class="form-control"
-                        [(ngModel)]="data.basic.mode_of_admission_category">
+                        [(ngModel)]="data.basic.mode_of_admission_category" (change)="change_semester_table()">
                         <option *ngFor="let key of objectKeys(optionsData.admission_category)" [value]="key">
                             {{ optionsData.admission_category[key] }}
                         </option>
@@ -221,14 +223,14 @@
                     </small>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="is_semester">
                 <th colspan="16" class="text-success center">
                     Semester Details
                 </th>
             </tr>
-            <tr>
+            <tr *ngIf="is_semester">
                 <td colspan="16">
-                    <table>
+                    <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <th>#</th>

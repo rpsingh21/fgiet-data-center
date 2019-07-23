@@ -47,6 +47,8 @@ class FormDetails(APIView):
             'academic_type': dict(sm.Academic.ACADEMIC_TYPE),
             'fee_type': dict(Fee.FEE_TYPE),
             'branch': dict(sm.Branch.objects.values_list('id', 'name')),
+            'semester': dict(
+                sm.Branch.objects.values_list('id', 'total_semester')),
             'year': [1, 2, 3, 4],
             'gender': dict(sm.Student.GENDER_CHOICES),
             'mode_of_payment': dict(Fee.PAYMENT_TYPE),
