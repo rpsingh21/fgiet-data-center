@@ -39,9 +39,20 @@ export class FeeRegistrationComponent implements OnInit {
             const formData = new FormData();
             const file = event.target.files[0];
             formData.append("upload", file);
-            this.api.post("student/upload", formData).subscribe((res: any) => {
-                this.data.basic.image = res.upload;
-            });
+            this.api.post("student/upload", formData).subscribe(
+                (res: any) => {
+                    this.data.basic["image"] = res.upload;
+                    this.errors.basic.image = null;
+                },
+                (error: any) => {
+                    if (error.status == 400) {
+                        if (this.errors.basic == null) {
+                            this.errors.basic = {};
+                        }
+                        this.errors.basic.image = error.error.upload;
+                    }
+                }
+            );
         }
     }
 

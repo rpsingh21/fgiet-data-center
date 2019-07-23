@@ -169,3 +169,6 @@ AWS_HEADERS = {
     'Expires': expires,
     'Cache-Control': 'max-age=%d' % (int(two_months.total_seconds()), ),
 }
+
+# max file upload size default set 100KB
+MAX_UPLOAD_SIZE = os.environ.get('MAX_UPLOAD_SIZE', 102400)

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 from accounts.models import Timestamp
+from .utils import get_session
 
 
 class Branch(Timestamp):
@@ -93,8 +94,12 @@ class Academic(models.Model):
         return self.student.name
 
 
+def upload_location(instance, filename):
+    return "student/%s/%s" % (get_session(), filename)
+
+
 class Document(models.Model):
-    upload = models.FileField()
+    upload = models.ImageField(upload_to=upload_location)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

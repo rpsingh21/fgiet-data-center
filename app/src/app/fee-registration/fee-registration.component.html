@@ -65,7 +65,8 @@
                     </small>
                 </td>
                 <td>
-                    <input type="file" name="image" (change)="onUpload($event)" accept="image/jpeg" />
+                    <input type="file" name="image" class="form-control" (change)="onUpload($event)"
+                        accept="image/jpeg" />
                     <small *ngIf="errors.basic?.image" class="text-danger">
                         {{ errors.basic.image }}
                     </small>
