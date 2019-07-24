@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { switchMap } from "rxjs/operators";
 
 import { ApiService } from "../api.service";
 import { fee_form, fee_form_errors } from "../data";
@@ -16,13 +17,20 @@ export class FeeRegistrationComponent implements OnInit {
     optionsData: any;
     is_semester = true;
 
-    constructor(private api: ApiService, private router: Router) {}
+    constructor(
+        private api: ApiService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit() {
         this.change_semester_table();
         // this.api.get("fee/details/16").subscribe((res: any) => {
         //     this.data = res.details;
         // });
+        this.route.params.subscribe(res => {
+            console.log(res);
+        });
         this.api.get("fee/form-details").subscribe((res: any) => {
             this.optionsData = res;
         });

@@ -1,1 +1,38 @@
-<p>home works!</p>
+<div class="my-card mt-5">
+    <div class="border center p-2">
+        <img class="pt-1 mx-auto img-fluid" src="https://fgiet.s3.us-east-2.amazonaws.com/media/header.png" alt="fgiet">
+    </div>
+</div>
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Re-Print Your Form</h3>
+            <form [formGroup]="rePrintForm" (ngSubmit)="submitRePrintForm(rePrintForm.value)">
+                <div class="form-group">
+                    <input type="text" name="form_id" class="form-control" placeholder="Form Id" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="dob" class="form-control" placeholder="Date of Birth" required />
+                </div>
+                <div class="form-group center">
+                    <input type="submit" class="btnSubmit" value="submit" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 login-form-2">
+            <h3>Fee Registration </h3>
+            <form [formGroup]="regForm" (ngSubmit)="submitRegForm(regForm.value)">
+                <div class="form-group">
+                    <input type="text" name="roll_no" class="form-control" placeholder="Roll No" />
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Email Address" />
+                </div>
+                <div class="form-group center">
+                    <input type="submit" class="btnSubmit" value="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

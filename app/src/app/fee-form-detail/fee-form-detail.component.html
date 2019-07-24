@@ -1,4 +1,8 @@
-<div class="container my-5">
+<div class="my-card mt-5">
+    <div class="border center p-2 mb-3">
+        <img class="pt-1 mx-auto img-fluid" src="https://fgiet.s3.us-east-2.amazonaws.com/media/header.png" alt="fgiet">
+        <br><b class="text-danger">REGISTRATION FORM Of STUDENT (SESSION 2019-2020)</b>
+    </div>
     <table class="table table-bordered">
         <tbody>
             <tr>
@@ -34,8 +38,12 @@
             <tr>
                 <th colspan="4">Date of Birth</th>
                 <td colspan="10">{{ data.basic.dob| date }}</td>
-                <td>
+                <td class="center">
                     <!-- <input type="file" name="image" (change)="onUpload($event)"/> -->
+                    <button class="btn btn-primary doNotPrint" (click)="onPrint()">
+                        <img height="25" src="https://www.fgiet.in/media/img/printer.png">
+                        Print Application
+                    </button>
                 </td>
             </tr>
             <tr>
@@ -159,13 +167,20 @@
                 <th colspan="4">Transfer Id</th>
                 <td colspan="4">{{ data.fee.transfer_id }}</td>
                 <th colspan="4">Date</th>
-                <td colspan="4">{{ data.fee.transfer_date }}</td>
+                <td colspan="4">{{ data.fee.transfer_date | date }}</td>
             </tr>
         </tbody>
     </table>
-    <div class="center">
-        <!-- <button (click)="onSumitForm()" class="btn btn-primary">
-            <b class="mx-5">Submit</b>
-        </button> -->
+    <div class="row px-3 mt-3">
+        <p>
+            I <b><i>{{ data.basic.name }}</i></b> hear by declare that above given information are correct to best my
+            knowledge
+            and belief. I will be fully responsible for any discrepancy found in above information.
+        </p>
+    </div>
+    <div class="row m-5 py-3 center">
+        <div class="col"> Account of Officer </div>
+        <div class="col"> Signature of HOD</div>
+        <div class="col"> Signature of Student </div>
     </div>
 </div>

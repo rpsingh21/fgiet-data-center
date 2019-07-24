@@ -24,4 +24,8 @@ export class FeeFormDetailComponent implements OnInit {
             this.is_semester = this.data.semesters.length > 0;
         });
     }
+
+    onPrint() {
+        window.print();
+    }
 }
