@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { switchMap } from "rxjs/operators";
 
 import { ApiService } from "../api.service";
 import { fee_form, fee_form_errors } from "../data";
@@ -25,12 +24,13 @@ export class FeeRegistrationComponent implements OnInit {
 
     ngOnInit() {
         this.change_semester_table();
-        // this.api.get("fee/details/16").subscribe((res: any) => {
-        //     this.data = res.details;
-        // });
-        this.route.params.subscribe(res => {
-            console.log(res);
-        });
+        const roll_no = this.route.snapshot.queryParamMap.get("roll_no");
+        const email = this.route.snapshot.queryParamMap.get("email");
+        if (!(roll_no && email)) {
+            this.router.navigate(["/"]);
+        }
+        this.data.basic.roll_no = roll_no;
+        this.data.basic.email = email;
         this.api.get("fee/form-details").subscribe((res: any) => {
             this.optionsData = res;
         });

@@ -13,7 +13,7 @@
             <tr>
                 <th colspan="4">Roll No</th>
                 <td colspan="10">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.roll_no">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.roll_no" disabled>
                     <small *ngIf="errors.basic?.roll_no" class="text-danger">
                         {{ errors.basic.roll_no }}
                     </small>
@@ -163,7 +163,7 @@
             <tr>
                 <th colspan="2">Email Id</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.email">
+                    <input type="text" class="form-control" [(ngModel)]="data.basic.email" disabled>
                     <small *ngIf="errors.basic?.email" class="text-danger">
                         {{ errors.basic.email }}
                     </small>

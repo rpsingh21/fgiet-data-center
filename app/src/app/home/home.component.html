@@ -10,10 +10,11 @@
             <h3>Re-Print Your Form</h3>
             <form [formGroup]="rePrintForm" (ngSubmit)="submitRePrintForm(rePrintForm.value)">
                 <div class="form-group">
-                    <input type="text" name="form_id" class="form-control" placeholder="Form Id" required />
+                    <input type="text" formControlName="form_id" class="form-control" placeholder="Form Id" required />
                 </div>
                 <div class="form-group">
-                    <input type="text" name="dob" class="form-control" placeholder="Date of Birth" required />
+                    <input type="text" formControlName="dob" class="form-control" placeholder="Date of Birth"
+                        required />
                 </div>
                 <div class="form-group center">
                     <input type="submit" class="btnSubmit" value="submit" />
@@ -24,10 +25,12 @@
             <h3>Fee Registration </h3>
             <form [formGroup]="regForm" (ngSubmit)="submitRegForm(regForm.value)">
                 <div class="form-group">
-                    <input type="text" name="roll_no" class="form-control" placeholder="Roll No" />
+                    <input type="text" formControlName="roll_no" class="form-control" placeholder="Roll No"
+                        [ngClass]="{ 'invalid': submitted && f.email.errors }" />
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Email Address" />
+                    <input type="text" formControlName="email" class="form-control" placeholder="Email Address"
+                        [ngClass]="{ 'invalid': submitted && f.email.errors }" />
                 </div>
                 <div class="form-group center">
                     <input type="submit" class="btnSubmit" value="submit" />
