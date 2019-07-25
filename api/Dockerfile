@@ -1,6 +1,7 @@
 FROM python:3.7-slim
 
 ENV PYTHONUNBUFFERED 1
+RUN pip install --upgrade pip
 RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
