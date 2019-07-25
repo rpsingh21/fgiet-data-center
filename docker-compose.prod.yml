@@ -61,7 +61,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/rpsingh/workspace/fgiet-data-center/app/dist/app
+      device: /root/fgiet-data-center/app/dist/app
       o: bind
 
 networks:
