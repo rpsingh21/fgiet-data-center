@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 from accounts.models import Timestamp
-from .utils import get_session
+from .utils import get_session, compress
 
 
 class Branch(Timestamp):
@@ -104,3 +104,8 @@ class Document(models.Model):
 
     def __str__(self):
         return self.upload.name
+
+    def save(self, *args, **kwargs):
+        new_image = compress(self.upload)
+        self.upload = new_image
+        super().save(*args, **kwargs)

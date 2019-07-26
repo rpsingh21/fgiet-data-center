@@ -12,6 +12,7 @@ import { ApiService } from "../api.service";
 export class HomeComponent implements OnInit {
     regForm;
     rePrintForm;
+    submitted = false;
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
     }
 
     submitRegForm(value) {
+        this.submitted = true;
         if (this.regForm.invalid) {
             return;
         }
