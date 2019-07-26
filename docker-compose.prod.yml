@@ -37,6 +37,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
     depends_on:
       - api
     networks:
@@ -50,7 +51,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email rohitprakashsingh21@gmail.com --agree-tos --no-eff-email --staging -d fee.fgiet.in
+    command: certonly --webroot --webroot-path=/var/www/html --email rohitprakashsingh21@gmail.com --agree-tos --no-eff-email -d fee.fgiet.in
 
 volumes:
   certbot-etc:
@@ -62,6 +63,12 @@ volumes:
     driver_opts:
       type: none
       device: /root/fgiet-data-center/app/dist/app
+      o: bind
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /root/fgiet-data-center/dhparam/
       o: bind
 
 networks:
