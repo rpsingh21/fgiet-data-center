@@ -174,3 +174,10 @@ AWS_HEADERS = {
 
 # max file upload size default set 100KB
 MAX_UPLOAD_SIZE = os.environ.get('MAX_UPLOAD_SIZE', 102400)
+
+# JWT TOKEN AUTH
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
