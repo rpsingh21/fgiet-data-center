@@ -10,7 +10,9 @@ export class FeeDashboardComponent implements OnInit {
     constructor(private api: ApiService) {}
     data = [];
 
-    ngOnInit() {
+    ngOnInit() {}
+
+    updateTable() {
         this.api.get("fee/admin/details").subscribe((res: any) => {
             this.data = res.map(item => {
                 return {

@@ -42,6 +42,7 @@ class FeeRegister(Timestamp):
     session = models.CharField(max_length=16, blank=True)
     roll_no = models.CharField(max_length=16)
     email = models.EmailField()
+    transfer_date = models.DateField()
     details = JSONField()
     is_verified = models.CharField(max_length=16, choices=STATUS, default='0')
 

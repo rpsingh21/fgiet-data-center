@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
+from django_filters import rest_framework as filters
 
 from .models import FeeRegister, Fee
 from students import models as sm, utils
@@ -64,9 +65,34 @@ class FeeRetrieveAPIView(RetrieveAPIView):
     queryset = FeeRegister.objects.all()
 
 
+class FeeRegisterFilter(filters.FilterSet):
+
+    year = filters.CharFilter(field_name='details__basic__year')
+    branch = filters.CharFilter(field_name='details__basic__branch')
+    status = filters.CharFilter(field_name='is_verified')
+    transfer_date_to = filters.CharFilter(
+        field_name='transfer_date', lookup_expr='gte')
+    transfer_date_from = filters.CharFilter(
+        field_name='transfer_date', lookup_expr='lte')
+
+    class Meta:
+        model = FeeRegister
+        fields = (
+            'roll_no',
+            'form_id',
+            'session',
+            'status',
+            'year',
+            'transfer_date_to',
+            'transfer_date_from',
+        )
+
+
 class FeeRegisterListAPIView(ListAPIView):
     serializer_class = FeeRegisterTableSerializer
     queryset = FeeRegister.objects.all()
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = FeeRegisterFilter
 
 
 class RePrintAPIView(APIView):

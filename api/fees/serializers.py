@@ -45,10 +45,12 @@ class FeeRegisterFormSerializer(serializers.Serializer):
         basic_details = validated_data.get('basic')
         roll_no = basic_details.get('roll_no')
         email = basic_details.get('email')
+        transfer_date = validated_data.get('fee').get('transfer_date')
         details = self.context.get('request').data
         save_data = FeeRegister.objects.create(
             roll_no=roll_no,
             email=email,
+            transfer_date=transfer_date,
             details=details,
         )
         return save_data
