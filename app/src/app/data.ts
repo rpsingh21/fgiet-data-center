@@ -5,7 +5,7 @@ export const fee_form = {
         branch: null,
         fee_type: null,
         total_fee: null,
-        challan_no: null,
+        challan_no: "",
         transfer_id: null,
         transfer_date: null,
         mode_of_payment: null
@@ -21,7 +21,7 @@ export const fee_form = {
         address: null,
         roll_no: null,
         category: null,
-        sub_category: null,
+        sub_category: "",
         addhar_no: null,
         mobile_no: null,
         father_name: null,

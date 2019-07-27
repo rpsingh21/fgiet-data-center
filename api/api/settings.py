@@ -26,7 +26,7 @@ SECRET_KEY = '5#v9$j8x*c_5*y@o%i$duqsq+5lj6r4771e%12poang@wgak&q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = ['fee.fgiet.in', 'localhsot', '127.0.0.1']
+ALLOWED_HOSTS = ['registration.fgiet.in', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -138,7 +138,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:4200",
     "http://127.0.0.1:4200",
     "http://134.209.150.95",
-    "https://fee.fgiet.in"
+    "https://registration.fgiet.in"
 ]
 
 # AWS SETTINGS
