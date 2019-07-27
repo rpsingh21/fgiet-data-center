@@ -69,3 +69,23 @@ class FeeRegisterTableSerializer(serializers.ModelSerializer):
             'fee',
             'created_at',
         ]
+
+
+class RePrintSerializer(serializers.Serializer):
+    form_id = serializers.CharField()
+    dob = serializers.DateField()
+
+    class Meta:
+        fields = [
+            'form_id',
+            'dob',
+        ]
+
+    def validate(seld, data):
+        form_id = data.get('form_id')
+        dob = data.get('dob').strftime('%Y-%m-%d')
+        instance = FeeRegister.objects.filter(
+            form_id=form_id, details__basic__dob=dob)
+        if not instance.exists():
+            raise serializers.ValidationError('From not exists')
+        return data

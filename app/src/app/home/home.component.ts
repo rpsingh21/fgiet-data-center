@@ -12,7 +12,9 @@ import { ApiService } from "../api.service";
 export class HomeComponent implements OnInit {
     regForm;
     rePrintForm;
+    rePrintError;
     submitted = false;
+    rsubmitted = false;
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
@@ -26,8 +28,8 @@ export class HomeComponent implements OnInit {
             email: ["", [Validators.required, Validators.email]]
         });
         this.rePrintForm = this.formBuilder.group({
-            form_id: ["", Validators.required],
-            dob: ["", Validators.required]
+            form_id: ["1901031", Validators.required],
+            dob: ["1996-09-21", Validators.required]
         });
     }
 
@@ -51,10 +53,19 @@ export class HomeComponent implements OnInit {
     }
 
     submitRePrintForm(value) {
-        console.log("hello", value);
+        this.rsubmitted = true;
         if (this.rePrintForm.invalid) {
             return;
         }
-        console.log("submit");
+        this.api.post("fee/reprint", value).subscribe(
+            (res: any) => {
+                this.router.navigate(["fee", "form", res.token]);
+            },
+            err => {
+                if (err.status == 400) {
+                    this.rePrintError = "Form id or Date of brith is wrong";
+                }
+            }
+        );
     }
 }

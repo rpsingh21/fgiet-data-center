@@ -10,11 +10,14 @@
             <h3>Re-Print Your Form</h3>
             <form [formGroup]="rePrintForm" (ngSubmit)="submitRePrintForm(rePrintForm.value)">
                 <div class="form-group">
-                    <input type="text" formControlName="form_id" class="form-control" placeholder="Form Id" required />
+                    <input type="text" formControlName="form_id" class="form-control" placeholder="Form Id" />
                 </div>
                 <div class="form-group">
-                    <input type="text" formControlName="dob" class="form-control" placeholder="Date of Birth"
-                        required />
+                    <input type="text" onfocus="(this.type='date')" formControlName="dob" class="form-control"
+                        placeholder="Date of Birth" />
+                </div>
+                <div class="row text-danger m-1" *ngIf="rePrintError">
+                    <small class="center">{{ rePrintError }}</small>
                 </div>
                 <div class="form-group center">
                     <input type="submit" class="btnSubmit" value="submit" />
@@ -26,7 +29,7 @@
             <form [formGroup]="regForm" (ngSubmit)="submitRegForm(regForm.value)">
                 <div class="form-group">
                     <input type="text" formControlName="roll_no" class="form-control" placeholder="Roll No"
-                        [ngClass]="{ 'invalid': submitted && f.email.errors }" />
+                        [ngClass]="{ 'invalid': submitted && f.roll_no.errors }" />
                 </div>
                 <div class="form-group">
                     <input type="text" formControlName="email" class="form-control" placeholder="Email Address"

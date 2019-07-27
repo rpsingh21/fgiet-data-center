@@ -1,15 +1,17 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
 
 from .models import FeeRegister, Fee
-from students import models as sm
+from students import models as sm, utils
 from .serializers import (
     FeeSerializer,
     FeeRegisterSerializer,
     FeeRegisterFormSerializer,
     FeeRegisterTableSerializer,
+    RePrintSerializer,
 )
 
 
@@ -65,3 +67,27 @@ class FeeRetrieveAPIView(RetrieveAPIView):
 class FeeRegisterListAPIView(ListAPIView):
     serializer_class = FeeRegisterTableSerializer
     queryset = FeeRegister.objects.all()
+
+
+class RePrintAPIView(APIView):
+    serializer_class = RePrintSerializer
+
+    def get(self, request):
+        try:
+            token = request.GET.get('token')
+            form_id = utils.valid_jwt_token(token)
+            instance = get_object_or_404(FeeRegister, form_id=form_id)
+            serializer = FeeRegisterSerializer(instance)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as ex:
+            return Response(
+                {'error': str(ex)}, status=status.HTTP_403_FORBIDDEN)
+
+    def post(self, request):
+        serializer = RePrintSerializer(
+            data=request.data, context={'request': request})
+        if serializer.is_valid():
+            token = utils.get_jwt_token(serializer.data.get('form_id'))
+            response = {'token': token}
+            return Response(response, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
