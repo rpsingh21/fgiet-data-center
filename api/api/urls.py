@@ -24,6 +24,6 @@ urlpatterns = [
     path('api/admin/', admin.site.urls),
     path('api/v1/student/', include('students.urls', namespace='students')),
     path('api/v1/fee/', include('fees.urls', namespace='fees')),
-    path('api/login/', TokenObtainPairView.as_view(), name='login'),
-    path('api/login/refresh/', TokenRefreshView.as_view(), name='refresh'),
+    path('api/v1/login', TokenObtainPairView.as_view(), name='login'),
+    path('api/v1/login/refresh', TokenRefreshView.as_view(), name='refresh'),
 ]

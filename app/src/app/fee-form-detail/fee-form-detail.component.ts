@@ -23,7 +23,6 @@ export class FeeFormDetailComponent implements OnInit {
     ngOnInit() {
         const id = this.route.snapshot.paramMap.get("id");
         const token = this.route.snapshot.paramMap.get("token");
-        console.log(token, id);
         if (id) {
             this.api.get(`fee/details/${id}`).subscribe(
                 (res: any) => {

@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
     rePrintForm;
     rePrintError;
     submitted = false;
-    rsubmitted = false;
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
@@ -28,8 +27,8 @@ export class HomeComponent implements OnInit {
             email: ["", [Validators.required, Validators.email]]
         });
         this.rePrintForm = this.formBuilder.group({
-            form_id: ["1901031", Validators.required],
-            dob: ["1996-09-21", Validators.required]
+            form_id: ["", Validators.required],
+            dob: ["", Validators.required]
         });
     }
 
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
     }
 
     get ff() {
-        return this.rePrintForm.console;
+        return this.rePrintForm.controls;
     }
 
     submitRegForm(value) {
@@ -48,12 +47,10 @@ export class HomeComponent implements OnInit {
         if (this.regForm.invalid) {
             return;
         }
-        console.log(value);
         this.router.navigate(["fee", "registration"], { queryParams: value });
     }
 
     submitRePrintForm(value) {
-        this.rsubmitted = true;
         if (this.rePrintForm.invalid) {
             return;
         }
