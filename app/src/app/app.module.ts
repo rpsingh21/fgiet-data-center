@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ApiService } from "./api.service";
+import { AuthGuard } from "./auth.guard";
 import { AppComponent } from "./app.component";
 import { FeeRegistrationComponent } from "./fee-registration/fee-registration.component";
 import { HomeComponent } from "./home/home.component";
@@ -30,7 +31,7 @@ import { LoginComponent } from "./admin/login/login.component";
         ReactiveFormsModule,
         HttpClientModule
     ],
-    providers: [ApiService],
+    providers: [ApiService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

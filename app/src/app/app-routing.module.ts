@@ -7,12 +7,18 @@ import { FeeFormDetailComponent } from "./fee-form-detail/fee-form-detail.compon
 import { FeeDashboardComponent } from "./admin/fee-dashboard/fee-dashboard.component";
 import { LoginComponent } from "./admin/login/login.component";
 
+import { AuthGuard } from "./auth.guard";
+
 const routes: Routes = [
     { path: "", component: HomeComponent },
     { path: "fee/registration", component: FeeRegistrationComponent },
     { path: "fee/details/:id", component: FeeFormDetailComponent },
     { path: "fee/form/:token", component: FeeFormDetailComponent },
-    { path: "admin", component: FeeDashboardComponent },
+    {
+        path: "admin",
+        component: FeeDashboardComponent,
+        canActivate: [AuthGuard]
+    },
     { path: "admin/login", component: LoginComponent }
 ];
 
