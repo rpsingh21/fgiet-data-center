@@ -20,12 +20,12 @@
                         </option>
                     </select>
                 </td>
-                <th>Status</th>
+                <th>Branch</th>
                 <td>
-                    <select [(ngModel)]="filterData.status" class="form-control">
+                    <select [(ngModel)]="filterData.branch" class="form-control">
                         <option value=""> all </option>
-                        <option *ngFor="let key of objectKeys(optionsData.status)" [value]="key">
-                            {{ optionsData.status[key] }}
+                        <option *ngFor="let key of objectKeys(optionsData.branch)" [value]="key">
+                            {{ optionsData.branch[key] }}
                         </option>
                     </select>
                 </td>
@@ -41,7 +41,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Payment Type</th>
+                <th>Mode of Payment</th>
                 <td>
                     <select [(ngModel)]="filterData.mode_of_payment" class="form-control">
                         <option value=""> all </option>
@@ -56,6 +56,26 @@
                         <option value=""> all </option>
                         <option *ngFor="let key of optionsData.year" [value]="key">
                             {{ key }}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Fee Type</th>
+                <td>
+                    <select [(ngModel)]="filterData.fee_type" class="form-control">
+                        <option value=""> all </option>
+                        <option *ngFor="let key of objectKeys(optionsData.fee_type)" [value]="key">
+                            {{ optionsData.fee_type[key] }}
+                        </option>
+                    </select>
+                </td>
+                <th>Status</th>
+                <td>
+                    <select [(ngModel)]="filterData.status" class="form-control">
+                        <option value=""> all </option>
+                        <option *ngFor="let key of objectKeys(optionsData.status)" [value]="key">
+                            {{ optionsData.status[key] }}
                         </option>
                     </select>
                 </td>

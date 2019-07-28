@@ -46,7 +46,7 @@ class Student(Timestamp):
         ('Lateral_entry', 'Lateral Entry'),
         ('FW', 'FW'),
         ('EWS', 'EWS'),
-        ('other', 'other'),
+        ('Open', 'Open'),
     )
     roll_no = models.CharField(max_length=16, unique=True)
     name = models.CharField(max_length=64)

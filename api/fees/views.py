@@ -71,9 +71,12 @@ class FeeRetrieveAPIView(RetrieveAPIView):
 
 class FeeRegisterFilter(filters.FilterSet):
 
-    year = filters.CharFilter(field_name='details__basic__year')
+    year = filters.CharFilter(field_name='details__fee__year')
     branch = filters.CharFilter(field_name='details__basic__branch')
     status = filters.CharFilter(field_name='is_verified')
+    fee_type = filters.CharFilter(field_name='details__fee__fee_type')
+    mode_of_payment = filters.CharFilter(
+        field_name='details__fee__mode_of_payment')
     transfer_date_to = filters.CharFilter(
         field_name='transfer_date', lookup_expr='gte')
     transfer_date_from = filters.CharFilter(
@@ -89,6 +92,8 @@ class FeeRegisterFilter(filters.FilterSet):
             'year',
             'transfer_date_to',
             'transfer_date_from',
+            'branch',
+            'mode_of_payment',
         )
 
 

@@ -72,6 +72,8 @@ export const filter_form = {
     form_id: "",
     session: "2019-20",
     status: "",
+    branch: "1",
+    fee_type: "",
     mode_of_payment: "",
     year: "",
     transfer_date_to: "",
