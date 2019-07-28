@@ -1,42 +1,118 @@
-<div class="container">
-    <div *ngIf="data.length">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th> Form No. </th>
-                    <th> Session </th>
-                    <th> Name </th>
-                    <th> Roll No. </th>
-                    <th> Year </th>
-                    <th> Branch</th>
-                    <th> Mod of Payment</th>
-                    <th> Fee Type </th>
-                    <th> Amount </th>
-                    <th> Total Amount </th>
-                    <th> Transfer Id </th>
-                    <th> Transfer Date </th>
-                    <th> Registration Date </th>
-                    <th> Approval Status </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of data">
-                    <td> {{ item.form_id }} </td>
-                    <td> {{ item.session }}</td>
-                    <td> {{ item.name }} </td>
-                    <td> {{ item.roll_no }} </td>
-                    <td> {{ item.year }} </td>
-                    <td> {{ item.branch }}</td>
-                    <td> {{ item.mode_of_payment }} </td>
-                    <td> {{ item.fee_type }}</td>
-                    <td> {{ item.amount }} </td>
-                    <td> {{ item.total_fee }} </td>
-                    <td> {{ item.transfer_id }} </td>
-                    <td> {{ item.transfer_date |  date }} </td>
-                    <td> {{ item.registration_datetime | date:'medium' }} </td>
-                    <td> {{ item.is_verified }} </td>
-                </tr>
-            </tbody>
-        </table>
+<div class="my-5 my-card">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Roll No</th>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filterData.roll_no">
+                </td>
+                <th>Form Id</th>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filterData.form_id">
+                </td>
+            </tr>
+            <tr>
+                <th>Session</th>
+                <td>
+                    <select [(ngModel)]="filterData.session" class="form-control">
+                        <option *ngFor="let key of objectKeys(optionsData.session)" [value]="key">
+                            {{ optionsData.session[key] }}
+                        </option>
+                    </select>
+                </td>
+                <th>Status</th>
+                <td>
+                    <select [(ngModel)]="filterData.status" class="form-control">
+                        <option value=""> all </option>
+                        <option *ngFor="let key of objectKeys(optionsData.status)" [value]="key">
+                            {{ optionsData.status[key] }}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Transfer Date To</th>
+                <td>
+                    <input type="date" class="form-control" [(ngModel)]="filterData.transfer_date_to">
+                </td>
+                <th>Transfer Date From</th>
+                <td>
+                    <input type="date" class="form-control" [(ngModel)]="filterData.transfer_date_from">
+                </td>
+            </tr>
+            <tr>
+                <th>Payment Type</th>
+                <td>
+                    <select [(ngModel)]="filterData.mode_of_payment" class="form-control">
+                        <option value=""> all </option>
+                        <option *ngFor="let key of objectKeys(optionsData.mode_of_payment)" [value]="key">
+                            {{ optionsData.mode_of_payment[key] }}
+                        </option>
+                    </select>
+                </td>
+                <th>Year</th>
+                <td>
+                    <select [(ngModel)]="filterData.year" class="form-control">
+                        <option value=""> all </option>
+                        <option *ngFor="let key of optionsData.year" [value]="key">
+                            {{ key }}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="center">
+        <button (click)="updateTable()" class="btn btn-primary">
+            <b class="mx-5">Filter</b>
+        </button>
+    </div>
+    <hr>
+    <div class="mt-5">
+        <div *ngIf="data.length" class="float-right mb-3">
+            <button class="btn btn-primary" (click)="exportAsXLSX()">
+                <img src="https://www.fgiet.in/media/img/csv.png" height="30px"> Export To Excel
+            </button>
+        </div>
+        <div *ngIf="data.length" class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Form No. </th>
+                        <th> Session </th>
+                        <th> Name </th>
+                        <th> Roll No. </th>
+                        <th> Year </th>
+                        <th> Branch</th>
+                        <th> Mod of Payment</th>
+                        <th> Fee Type </th>
+                        <th> Amount </th>
+                        <th> Total Amount </th>
+                        <th> Transfer Id </th>
+                        <th> Transfer Date </th>
+                        <th> Registration Date </th>
+                        <th> Approval Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data">
+                        <td> {{ item.form_id }} </td>
+                        <td> {{ item.session }}</td>
+                        <td> {{ item.name }} </td>
+                        <td> {{ item.roll_no }} </td>
+                        <td> {{ item.year }} </td>
+                        <td> {{ item.branch }}</td>
+                        <td> {{ item.mode_of_payment }} </td>
+                        <td> {{ item.fee_type }}</td>
+                        <td> {{ item.amount }} </td>
+                        <td> {{ item.total_fee }} </td>
+                        <td> {{ item.transfer_id }} </td>
+                        <td> {{ item.transfer_date |  date }} </td>
+                        <td> {{ item.registration_datetime | date:'medium' }} </td>
+                        <td> {{ item.is_verified }} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

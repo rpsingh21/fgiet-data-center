@@ -43,6 +43,8 @@ class FeeRegisterAPIView(APIView):
 class FormDetails(APIView):
 
     def get(self, request):
+        session_list = list(
+            set(FeeRegister.objects.values_list('session', 'session')))
         data = {
             'category': dict(sm.Student.CATEGORY_CHOICES),
             'mode_of_admission': dict(sm.Student.MODE_OF_ADMISSION),
@@ -55,6 +57,8 @@ class FormDetails(APIView):
             'year': [1, 2, 3, 4],
             'gender': dict(sm.Student.GENDER_CHOICES),
             'mode_of_payment': dict(Fee.PAYMENT_TYPE),
+            'session': dict(session_list),
+            'status': dict(FeeRegister.STATUS)
         }
         return Response(data, status=status.HTTP_200_OK)
 

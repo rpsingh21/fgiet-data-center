@@ -11,6 +11,7 @@ import { ApiService } from "../../api.service";
 })
 export class LoginComponent implements OnInit {
     loginForm;
+    submitted;
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     }
 
     login(value) {
+        this.submitted = true;
         this.api.post(`login`, value).subscribe(res => {
             for (let key in res) {
                 localStorage.setItem(key, res[key]);

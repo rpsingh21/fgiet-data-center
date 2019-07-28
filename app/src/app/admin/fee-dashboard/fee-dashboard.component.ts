@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+
 import { ApiService } from "../../api.service";
+import { ExcelService } from "../../excel.service";
+import { filter_form } from "../../data";
+import { toQueryString } from "../../utils";
 
 @Component({
     selector: "app-fee-dashboard",
@@ -7,13 +11,28 @@ import { ApiService } from "../../api.service";
     styleUrls: ["./fee-dashboard.component.scss"]
 })
 export class FeeDashboardComponent implements OnInit {
-    constructor(private api: ApiService) {}
     data = [];
+    filterData = filter_form;
+    optionsData;
+    objectKeys = Object.keys;
 
-    ngOnInit() {}
+    constructor(private api: ApiService, private excel: ExcelService) {}
+
+    ngOnInit() {
+        this.loadOptionData();
+    }
+
+    loadOptionData() {
+        this.api.get("fee/form-details").subscribe((res: any) => {
+            this.optionsData = res;
+            this.updateTable();
+        });
+    }
 
     updateTable() {
-        this.api.get("fee/admin/details").subscribe((res: any) => {
+        const queryString = toQueryString(this.filterData);
+        const url = `fee/admin/details${queryString}`;
+        this.api.get(url).subscribe((res: any) => {
             this.data = res.map(item => {
                 return {
                     form_id: item.form_id,
@@ -22,17 +41,22 @@ export class FeeDashboardComponent implements OnInit {
                     session: item.session,
                     email: item.basic.email,
                     year: item.fee.year,
-                    branch: item.fee.branch,
-                    mode_of_payment: item.fee.mode_of_payment,
-                    fee_type: item.fee.fee_type,
+                    branch: this.optionsData.branch[item.fee.branch],
+                    mode_of_payment: this.optionsData.mode_of_payment[
+                        item.fee.mode_of_payment
+                    ],
+                    fee_type: this.optionsData.fee_type[item.fee.fee_type],
                     total_fee: item.fee.total_fee,
                     amount: item.fee.amount,
                     transfer_id: item.fee.transfer_id,
                     transfer_date: item.fee.transfer_date,
                     registration_datetime: item.created_at,
-                    is_verified: item.is_verified
+                    is_verified: this.optionsData.status[item.is_verified]
                 };
             });
         });
+    }
+    exportAsXLSX(): void {
+        this.excel.exportAsExcelFile(this.data, "sample");
     }
 }

@@ -58,7 +58,7 @@ class Student(Timestamp):
     category = models.CharField(max_length=16, choices=CATEGORY_CHOICES)
     sub_category = models.CharField(max_length=16, blank=True)
     address = models.TextField()
-    mobile_no = models.CharField(max_length=10)
+    mobile_no = models.CharField(max_length=10, blank=True)
     father_mobile_no = models.CharField(max_length=10)
     mother_mobile_no = models.CharField(max_length=10)
     email = models.EmailField(unique=True)

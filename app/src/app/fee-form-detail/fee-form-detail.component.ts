@@ -13,6 +13,7 @@ export class FeeFormDetailComponent implements OnInit {
     data = fee_form;
     form_id: String;
     is_semester = true;
+    optionsData;
 
     constructor(
         private api: ApiService,
@@ -23,27 +24,35 @@ export class FeeFormDetailComponent implements OnInit {
     ngOnInit() {
         const id = this.route.snapshot.paramMap.get("id");
         const token = this.route.snapshot.paramMap.get("token");
-        if (id) {
-            this.api.get(`fee/details/${id}`).subscribe(
-                (res: any) => {
-                    this.setData(res);
-                },
-                error => {
+        this.api.get("fee/form-details").subscribe(
+            (res: any) => {
+                this.optionsData = res;
+                if (id) {
+                    this.api.get(`fee/details/${id}`).subscribe(
+                        (res: any) => {
+                            this.setData(res);
+                        },
+                        error => {
+                            this.reDirectHome();
+                        }
+                    );
+                } else if (token) {
+                    this.api.get(`fee/reprint?token=${token}`).subscribe(
+                        (res: any) => {
+                            this.setData(res);
+                        },
+                        error => {
+                            this.reDirectHome();
+                        }
+                    );
+                } else {
                     this.reDirectHome();
                 }
-            );
-        } else if (token) {
-            this.api.get(`fee/reprint?token=${token}`).subscribe(
-                (res: any) => {
-                    this.setData(res);
-                },
-                error => {
-                    this.reDirectHome();
-                }
-            );
-        } else {
-            this.reDirectHome();
-        }
+            },
+            error => {
+                this.reDirectHome();
+            }
+        );
     }
 
     reDirectHome() {
@@ -52,7 +61,7 @@ export class FeeFormDetailComponent implements OnInit {
 
     setData(res) {
         this.data = res.details;
-        this.form_id = res.id;
+        this.form_id = res.form_id;
         this.is_semester = this.data.semesters.length > 0;
     }
 

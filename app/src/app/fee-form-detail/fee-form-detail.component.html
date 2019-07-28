@@ -11,13 +11,17 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="4">Roll No</th>
-                <td colspan="10">{{ data.basic.roll_no }} </td>
+                <th colspan="4">Form Id</th>
+                <td colspan="10">{{ form_id }} </td>
                 <td colspan="2" rowspan="5" class="w-25">
                     <img class="img-fluid" style="width: -webkit-fill-available;"
                         [src]="data.basic.image? data.basic.image: 'https://fgiet.s3.amazonaws.com/media/passport.jpg'"
                         alt="user image">
                 </td>
+            </tr>
+            <tr>
+                <th colspan="4">Roll No</th>
+                <td colspan="10">{{ data.basic.roll_no }} </td>
             </tr>
             <tr>
                 <th colspan="4" class="w-18">Name</th>
@@ -32,10 +36,6 @@
                 <td colspan="10">{{ data.basic. mother_name }}</td>
             </tr>
             <tr>
-                <th colspan="4">Address</th>
-                <td colspan="10">{{ data.basic.address }}</td>
-            </tr>
-            <tr>
                 <th colspan="4">Date of Birth</th>
                 <td colspan="10">{{ data.basic.dob| date }}</td>
                 <td class="center">
@@ -47,6 +47,10 @@
                 </td>
             </tr>
             <tr>
+                <th colspan="4">Address</th>
+                <td colspan="12">{{ data.basic.address }}</td>
+            </tr>
+            <tr>
                 <th colspan="16" class="center text-success">
                     Other Details
                 </th>
@@ -55,7 +59,7 @@
                 <th colspan="2">year</th>
                 <td colspan="6">{{ data.basic.year }}</td>
                 <th colspan="2" class="w-20">Branch</th>
-                <td colspan="6">{{ data.basic.branch }}</td>
+                <td colspan="6">{{ this.optionsData.branch[data.basic.branch] }}</td>
             </tr>
             <tr>
                 <th colspan="2">Gender</th>
@@ -94,7 +98,7 @@
             </tr>
             <tr>
                 <th colspan="4">Type</th>
-                <th colspan="6">Bord</th>
+                <th colspan="6">Board</th>
                 <th colspan="6">Marks</th>
             </tr>
             <tr *ngFor="let item of data?.academics">

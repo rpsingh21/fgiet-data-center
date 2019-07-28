@@ -66,3 +66,14 @@ export const fee_form_errors = {
     academics: null,
     semesters: null
 };
+
+export const filter_form = {
+    roll_no: "",
+    form_id: "",
+    session: "2019-20",
+    status: "",
+    mode_of_payment: "",
+    year: "",
+    transfer_date_to: "",
+    transfer_date_from: ""
+};

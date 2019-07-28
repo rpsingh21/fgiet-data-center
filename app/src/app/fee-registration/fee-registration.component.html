@@ -11,7 +11,7 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="4">Roll No</th>
+                <th colspan="4">Roll No *</th>
                 <td colspan="10">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.roll_no" disabled>
                     <small *ngIf="errors.basic?.roll_no" class="text-danger">
@@ -25,7 +25,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4" class="w-18">Name</th>
+                <th colspan="4" class="w-18">Name *</th>
                 <td colspan="10">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.name">
                     <small *ngIf="errors.basic?.name" class="text-danger">
@@ -34,7 +34,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4">Father Name</th>
+                <th colspan="4">Father Name *</th>
                 <td colspan="10">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.father_name">
                     <small *ngIf="errors.basic?.father_name" class="text-danger">
@@ -43,7 +43,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4">Mother Name</th>
+                <th colspan="4">Mother Name *</th>
                 <td colspan="10">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.mother_name">
                     <small *ngIf="errors.basic?.mother_name" class="text-danger">
@@ -52,7 +52,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4">Address</th>
+                <th colspan="4">Address *</th>
                 <td colspan="10">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.address">
                     <small *ngIf="errors.basic?.address" class="text-danger">
@@ -61,7 +61,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4">Date of Birth</th>
+                <th colspan="4">Date of Birth *</th>
                 <td colspan="10">
                     <input type="date" class="form-control" [(ngModel)]="data.basic.dob">
                     <small *ngIf="errors.basic?.dob" class="text-danger">
@@ -82,7 +82,7 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="2" class="w-20">Branch</th>
+                <th colspan="2" class="w-20">Branch *</th>
                 <td colspan="6">
                     <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.basic.branch"
                         (change)="change_semester_table()">
@@ -94,7 +94,7 @@
                         {{ errors.basic.branch }}
                     </small>
                 </td>
-                <th colspan="2">year</th>
+                <th colspan="2">Year *</th>
                 <td colspan="6">
                     <select *ngIf="optionsData?.year" class="form-control" [(ngModel)]="data.basic.year"
                         (change)="change_semester_table()">
@@ -108,7 +108,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="2">Gender</th>
+                <th colspan="2">Gender *</th>
                 <td colspan="6">
                     <select *ngIf="optionsData?.gender" class="form-control" [(ngModel)]="data.basic.gender">
                         <option *ngFor="let key of objectKeys(optionsData.gender)" [value]="key">
@@ -119,7 +119,7 @@
                         {{ errors.basic.gender }}
                     </small>
                 </td>
-                <th colspan="2">Category</th>
+                <th colspan="2">Category *</th>
                 <td colspan="6">
                     <select *ngIf="optionsData?.category" class="form-control" [(ngModel)]="data.basic.category">
                         <option *ngFor="let key of objectKeys(optionsData.category)" [value]="key">
@@ -136,7 +136,7 @@
                 <td colspan="6">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.sub_category">
                 </td>
-                <th colspan="2">Mobile No</th>
+                <th colspan="2">Mobile No *</th>
                 <td colspan="6">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.mobile_no">
                     <small *ngIf="errors.basic?.mobile_no" class="text-danger">
@@ -145,7 +145,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="2">Father Mobile No</th>
+                <th colspan="2">Father Mobile No *</th>
                 <td colspan="6">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.father_mobile_no">
                     <small *ngIf="errors.basic?.father_mobile_no" class="text-danger">
@@ -161,14 +161,14 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="2">Email Id</th>
+                <th colspan="2">Email Id *</th>
                 <td colspan="6">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.email" disabled>
                     <small *ngIf="errors.basic?.email" class="text-danger">
                         {{ errors.basic.email }}
                     </small>
                 </td>
-                <th colspan="2">Addhar No</th>
+                <th colspan="2">Addhar No *</th>
                 <td colspan="6">
                     <input type="text" class="form-control" [(ngModel)]="data.basic.addhar_no">
                     <small *ngIf="errors.basic?.addhar_no" class="text-danger">
@@ -177,7 +177,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="2">Mode of Admission</th>
+                <th colspan="2">Mode of Admission *</th>
                 <td colspan="6">
                     <select *ngIf="optionsData?.mode_of_admission" class="form-control"
                         [(ngModel)]="data.basic.mode_of_admission">
@@ -189,7 +189,7 @@
                         {{ errors.basic.mode_of_admission }}
                     </small>
                 </td>
-                <th colspan="2">Admission Category</th>
+                <th colspan="2">Admission Category *</th>
                 <td colspan="6">
                     <select *ngIf="optionsData?.admission_category" class="form-control"
                         [(ngModel)]="data.basic.mode_of_admission_category" (change)="change_semester_table()">
@@ -204,13 +204,13 @@
             </tr>
             <tr>
                 <th colspan="16" class="text-success center">
-                    Academic Details
+                    Academic Details *
                 </th>
             </tr>
             <tr>
                 <th colspan="4">Type</th>
-                <th colspan="6">Bord</th>
-                <th colspan="6">Marks</th>
+                <th colspan="6">Board</th>
+                <th colspan="6">Marks (%)</th>
             </tr>
             <tr *ngFor="let item of data.academics; index as i;">
                 <th colspan="4">{{ item.text }}</th>
@@ -229,7 +229,7 @@
             </tr>
             <tr *ngIf="is_semester">
                 <th colspan="16" class="text-success center">
-                    Semester Details
+                    Semester Details *
                 </th>
             </tr>
             <tr *ngIf="is_semester">
@@ -271,7 +271,7 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="4">Year</th>
+                <th colspan="4">Year *</th>
                 <td colspan="4">
                     <select *ngIf="optionsData?.year" class="form-control" [(ngModel)]="data.fee.year">
                         <option *ngFor="let key of optionsData.year" [value]="key">
@@ -282,7 +282,7 @@
                         {{ errors.fee.year }}
                     </small>
                 </td>
-                <th colspan="4" class="w-20">Branch</th>
+                <th colspan="4" class="w-20">Branch *</th>
                 <td colspan="4">
                     <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.fee.branch">
                         <option *ngFor="let key of objectKeys(optionsData.branch)" [value]="key">
@@ -295,7 +295,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4">Mode of Payment</th>
+                <th colspan="4">Mode of Payment *</th>
                 <td colspan="4">
                     <div class="form-row">
                         <div [ngClass]="{
@@ -317,7 +317,7 @@
                         {{ errors.fee.mode_of_payment }}
                     </small>
                 </td>
-                <th colspan="4">Amount</th>
+                <th colspan="4">Amount *</th>
                 <td colspan="4">
                     <input [(ngModel)]="data.fee.amount" type="text" class="form-control">
                     <small *ngIf="errors.fee?.amount" class="text-danger">
@@ -326,7 +326,7 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4">Fee Type</th>
+                <th colspan="4">Fee Type *</th>
                 <td colspan="4">
                     <select *ngIf="optionsData?.fee_type" class="form-control" [(ngModel)]="data.fee.fee_type">
                         <option *ngFor="let key of objectKeys(optionsData.fee_type)" [value]="key">
@@ -337,7 +337,7 @@
                         {{ errors.fee.fee_type }}
                     </small>
                 </td>
-                <th colspan="4">Total Fee</th>
+                <th colspan="4">Total Fee *</th>
                 <td colspan="4">
                     <input [(ngModel)]="data.fee.total_fee" type="text" class="form-control">
                     <small *ngIf="errors.fee?.total_fee" class="text-danger">
@@ -346,14 +346,14 @@
                 </td>
             </tr>
             <tr>
-                <th colspan="4">Transfer Id</th>
+                <th colspan="4">{{ data.fee.mode_of_payment=='CASH' ? 'Fee Receipt No':'Transfer Id'}} *</th>
                 <td colspan="4">
                     <input [(ngModel)]="data.fee.transfer_id" type="text" class="form-control">
                     <small *ngIf="errors.fee?.transfer_id" class="text-danger">
                         {{ errors.fee.transfer_id }}
                     </small>
                 </td>
-                <th colspan="4">Date</th>
+                <th colspan="4">Date *</th>
                 <td colspan="4">
                     <input [(ngModel)]="data.fee.transfer_date" type="date" class="form-control">
                     <small *ngIf="errors.fee?.transfer_date" class="text-danger">

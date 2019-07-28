@@ -19,7 +19,7 @@ class Fee(Timestamp):
         (HOSTEL, HOSTEL),
         (BOTH, BOTH),
     )
-    PAYMENT_TYPE = [(i, i) for i in 'RTGS,NIFT,ONLINE,CHALLAN'.split(',')]
+    PAYMENT_TYPE = [(i, i) for i in 'RTGS,NIFT,ONLINE,CHALLAN,CASH'.split(',')]
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     year = models.IntegerField()
     fee_type = models.CharField(max_length=32, choices=FEE_TYPE)
