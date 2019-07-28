@@ -27,7 +27,7 @@ export const fee_form = {
         father_name: null,
         mother_name: null,
         father_mobile_no: null,
-        mother_mobile_no: null,
+        mother_mobile_no: "",
         mode_of_admission: null,
         mode_of_admission_category: null
     },
