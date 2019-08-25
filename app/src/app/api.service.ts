@@ -1,13 +1,19 @@
-import {Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { environment } from '../environments/environment'
+import { environment } from "../environments/environment";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class ApiService {
     apiUrl = environment.apiUrl;
 
     constructor(private client: HttpClient) {}
+
+    getAuthHeader() {
+        return new HttpHeaders({
+            Authorization: "Bearer " + localStorage.getItem("access")
+        });
+    }
 
     get(end_point) {
         return this.client.get(this.apiUrl + end_point);
@@ -19,5 +25,11 @@ export class ApiService {
 
     put(end_point, data) {
         return this.client.put(this.apiUrl + end_point, data);
+    }
+
+    getx(end_point) {
+        return this.client.get(this.apiUrl + end_point, {
+            headers: this.getAuthHeader()
+        });
     }
 }

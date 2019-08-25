@@ -1,6 +1,6 @@
 <div class="my-5 my-card">
     <table class="table table-bordered">
-        <tbody>
+        <tbody *ngIf="optionsData?.session">
             <tr>
                 <th>Roll No</th>
                 <td>
@@ -116,7 +116,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of data">
-                        <td> {{ item.form_id }} </td>
+                        <td><a [routerLink]="['/', 'admin', 'fee', 'details', item.form_id]">{{ item.form_id }}</a></td>
                         <td> {{ item.session }}</td>
                         <td> {{ item.name }} </td>
                         <td> {{ item.roll_no }} </td>

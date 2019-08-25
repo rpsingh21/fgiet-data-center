@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django_filters import rest_framework as filters
 
@@ -65,7 +66,8 @@ class FormDetails(APIView):
 
 class FeeRetrieveAPIView(RetrieveAPIView):
     serializer_class = FeeRegisterSerializer
-    lookup_field = 'id'
+    permission_classes = (IsAuthenticated,)
+    lookup_field = 'form_id'
     queryset = FeeRegister.objects.all()
 
 
@@ -99,6 +101,7 @@ class FeeRegisterFilter(filters.FilterSet):
 
 class FeeRegisterListAPIView(ListAPIView):
     serializer_class = FeeRegisterTableSerializer
+    permission_classes = (IsAuthenticated,)
     queryset = FeeRegister.objects.all()
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = FeeRegisterFilter

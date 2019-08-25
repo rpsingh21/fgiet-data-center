@@ -28,12 +28,12 @@ export class FeeFormDetailComponent implements OnInit {
             (res: any) => {
                 this.optionsData = res;
                 if (id) {
-                    this.api.get(`fee/details/${id}`).subscribe(
+                    this.api.getx(`fee/details/${id}`).subscribe(
                         (res: any) => {
                             this.setData(res);
                         },
                         error => {
-                            this.reDirectHome();
+                            this.router.navigate(["/", "admin", "login"]);
                         }
                     );
                 } else if (token) {
