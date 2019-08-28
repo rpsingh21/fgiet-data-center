@@ -64,7 +64,15 @@ export class FeeRegistrationComponent implements OnInit {
         });
         this.api.post("fee/", this.data).subscribe(
             (res: any) => {
-                this.router.navigate(["fee", "details", res.id]);
+                const formData = {
+                    dob: res.details.basic.dob,
+                    form_id: res.form_id
+                };
+                this.api
+                    .post("fee/reprint", formData)
+                    .subscribe((res1: any) => {
+                        this.router.navigate(["fee", "form", res1.token]);
+                    });
             },
             (error: any) => {
                 if (error.status == 400) {
