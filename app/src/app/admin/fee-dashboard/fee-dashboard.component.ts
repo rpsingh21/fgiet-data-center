@@ -55,6 +55,7 @@ export class FeeDashboardComponent implements OnInit {
                         total_fee: item.fee.total_fee,
                         amount: item.fee.amount,
                         transfer_id: item.fee.transfer_id,
+                        apply_date: item.created_at,
                         transfer_date: item.fee.transfer_date,
                         registration_datetime: item.created_at,
                         is_verified: this.optionsData.status[item.is_verified]

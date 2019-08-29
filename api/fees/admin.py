@@ -4,7 +4,7 @@ from .models import Fee, FeeRegister
 
 
 class FeeRegisterAdmin(admin.ModelAdmin):
-    list_display = ('form_id', 'roll_no', 'email', 'session',)
+    list_display = ('form_id', 'roll_no', 'email', 'session', 'created_at')
     list_filter = ('session', )
     search_fields = ('form_id', 'roll_no', 'email',)
 

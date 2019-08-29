@@ -108,6 +108,7 @@
                         <th> Fee Type </th>
                         <th> Amount </th>
                         <th> Total Amount </th>
+                        <th> Apply Date </th>
                         <th> Transfer Id </th>
                         <th> Transfer Date </th>
                         <th> Registration Date </th>
@@ -126,6 +127,7 @@
                         <td> {{ item.fee_type }}</td>
                         <td> {{ item.amount }} </td>
                         <td> {{ item.total_fee }} </td>
+                        <td> {{ item.apply_date | date: 'medium' }} </td>
                         <td> {{ item.transfer_id }} </td>
                         <td> {{ item.transfer_date |  date }} </td>
                         <td> {{ item.registration_datetime | date:'medium' }} </td>
