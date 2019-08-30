@@ -16,6 +16,7 @@ export class FeeDashboardComponent implements OnInit {
     filterData = filter_form;
     optionsData;
     objectKeys = Object.keys;
+    spinner = true;
 
     constructor(
         private api: ApiService,
@@ -35,6 +36,7 @@ export class FeeDashboardComponent implements OnInit {
     }
 
     updateTable() {
+        this.spinner = true;
         const queryString = toQueryString(this.filterData);
         const url = `fee/admin/details${queryString}`;
         this.api.getx(url).subscribe(
@@ -64,6 +66,10 @@ export class FeeDashboardComponent implements OnInit {
             },
             error => {
                 this.router.navigate(["/", "admin", "login"]);
+                this.spinner = false;
+            },
+            () => {
+                this.spinner = false;
             }
         );
     }

@@ -69,8 +69,13 @@
                     </small>
                 </td>
                 <td>
-                    <input type="file" name="image" class="form-control" (change)="onUpload($event)"
-                        accept="image/jpeg" />
+                    <input *ngIf="!spinner.image" type="file" name="image" class="form-control"
+                        (change)="onUpload($event)" accept="image/jpeg" />
+                    <div class="center" *ngIf="spinner.image">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                     <small *ngIf="errors.basic?.image" class="text-danger">
                         {{ errors.basic.image }}
                     </small>
@@ -364,8 +369,11 @@
         </tbody>
     </table>
     <div class="center">
-        <button (click)="onSumitForm()" class="btn btn-primary">
+        <button *ngIf="!spinner.form" (click)="onSumitForm()" class="btn btn-primary">
             <b class="mx-5">Submit</b>
         </button>
+        <div *ngIf="spinner.form" class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 </div>

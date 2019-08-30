@@ -102,7 +102,7 @@ class FeeRegisterFilter(filters.FilterSet):
 class FeeRegisterListAPIView(ListAPIView):
     serializer_class = FeeRegisterTableSerializer
     permission_classes = (IsAuthenticated,)
-    queryset = FeeRegister.objects.all()
+    queryset = FeeRegister.objects.all().order_by('-created_at')
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = FeeRegisterFilter
 

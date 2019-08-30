@@ -83,9 +83,12 @@
         </tbody>
     </table>
     <div class="center">
-        <button (click)="updateTable()" class="btn btn-primary">
-            <b class="mx-5">Filter</b>
+        <button *ngIf="!spinner" (click)="updateTable()" class="btn btn-primary">
+            <b class="mx-5">Filter Data</b>
         </button>
+        <div *ngIf="spinner" class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
     <hr>
     <div class="mt-5">

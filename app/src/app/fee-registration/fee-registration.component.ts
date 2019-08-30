@@ -15,6 +15,7 @@ export class FeeRegistrationComponent implements OnInit {
     errors = fee_form_errors;
     optionsData: any;
     is_semester = true;
+    spinner = { image: false, form: false };
 
     constructor(
         private api: ApiService,
@@ -38,9 +39,13 @@ export class FeeRegistrationComponent implements OnInit {
 
     onUpload(event) {
         if (event.target.files.length > 0) {
+            this.spinner.image = true;
             const formData = new FormData();
             const file = event.target.files[0];
             formData.append("upload", file);
+            if (this.errors.basic == null) {
+                this.errors.basic = {};
+            }
             this.api.post("student/upload", formData).subscribe(
                 (res: any) => {
                     this.data.basic["image"] = res.upload;
@@ -48,17 +53,19 @@ export class FeeRegistrationComponent implements OnInit {
                 },
                 (error: any) => {
                     if (error.status == 400) {
-                        if (this.errors.basic == null) {
-                            this.errors.basic = {};
-                        }
                         this.errors.basic.image = error.error.upload;
                     }
+                    this.spinner.image = false;
+                },
+                () => {
+                    this.spinner.image = false;
                 }
             );
         }
     }
 
     onSumitForm() {
+        this.spinner.form = true;
         this.data.academics = this.data.academics.filter(el => {
             return el.board && el.marks;
         });
@@ -78,6 +85,10 @@ export class FeeRegistrationComponent implements OnInit {
                 if (error.status == 400) {
                     this.errors = error.error;
                 }
+                this.spinner.form = false;
+            },
+            () => {
+                this.spinner.form = false;
             }
         );
     }
