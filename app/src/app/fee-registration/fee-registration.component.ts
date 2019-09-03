@@ -78,7 +78,9 @@ export class FeeRegistrationComponent implements OnInit {
                 this.api
                     .post("fee/reprint", formData)
                     .subscribe((res1: any) => {
-                        this.router.navigate(["fee", "form", res1.token]);
+                        this.router.navigate(["fee", "form", res1.token], {
+                            queryParams: { success: true }
+                        });
                     });
             },
             (error: any) => {

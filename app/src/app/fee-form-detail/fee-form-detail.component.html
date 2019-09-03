@@ -1,4 +1,8 @@
-<div class="my-card mt-5">
+<div *ngIf="success_mgs.show" class="alert alert-success rps-alert mt-3 doNotPrint"
+    [ngClass]="{'hide-alert': success_mgs.hide}" role="alert">
+    You have successfully submitted your registration form !
+</div>
+<div class="my-card mt-3">
     <div class="border center p-2 mb-3">
         <img class="pt-1 mx-auto img-fluid" src="https://fgiet.s3.us-east-2.amazonaws.com/media/header.png" alt="fgiet">
         <br><b class="text-danger">REGISTRATION FORM Of STUDENT (SESSION 2019-2020)</b>

@@ -14,6 +14,7 @@ export class FeeFormDetailComponent implements OnInit {
     form_id: String;
     is_semester = true;
     optionsData;
+    success_mgs = { show: false, hide: false };
 
     constructor(
         private api: ApiService,
@@ -22,6 +23,9 @@ export class FeeFormDetailComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.success_mgs.show = this.route.snapshot.queryParamMap.get("success")
+            ? true
+            : false;
         const id = this.route.snapshot.paramMap.get("id");
         const token = this.route.snapshot.paramMap.get("token");
         this.api.get("fee/form-details").subscribe(
@@ -53,6 +57,12 @@ export class FeeFormDetailComponent implements OnInit {
                 this.reDirectHome();
             }
         );
+        if (this.success_mgs.show) {
+            console.log("teting");
+            window.setTimeout(() => {
+                this.success_mgs.hide = true;
+            }, 3000);
+        }
     }
 
     reDirectHome() {
