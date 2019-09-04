@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models import Fee, FeeRegister
+from .utils import send_success_reg_mail
 from students.serializers import (
     StudentModelSerializer,
     AcademicModelSerializer,
@@ -53,6 +54,7 @@ class FeeRegisterFormSerializer(serializers.Serializer):
             transfer_date=transfer_date,
             details=details,
         )
+        send_success_reg_mail(save_data)
         return save_data
 
 
