@@ -1,3 +1,5 @@
+from threading import Thread
+
 from rest_framework import serializers
 
 from .models import Fee, FeeRegister
@@ -54,7 +56,8 @@ class FeeRegisterFormSerializer(serializers.Serializer):
             transfer_date=transfer_date,
             details=details,
         )
-        send_success_reg_mail(save_data)
+        thread = Thread(target=send_success_reg_mail, args=(save_data,))
+        thread.start()
         return save_data
 
 
