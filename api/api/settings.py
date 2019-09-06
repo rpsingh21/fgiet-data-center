@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5#v9$j8x*c_5*y@o%i$duqsq+5lj6r4771e%12poang@wgak&q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = eval(os.environ.get('DEBUG'))
 
 ALLOWED_HOSTS = ['registration.fgiet.in', 'localhost', '127.0.0.1']
 
@@ -185,8 +185,16 @@ MAX_UPLOAD_SIZE = os.environ.get('MAX_UPLOAD_SIZE', 102400)
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
 }
+
+if DEBUG:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].append(
+        'rest_framework.renderers.BrowsableAPIRenderer'
+    )
 
 # SimpleJWT setting
 SIMPLE_JWT = {
@@ -202,7 +210,8 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # Sentry init
-sentry_sdk.init(
-    dsn=os.environ.get('SENTRY_DNS'),
-    integrations=[DjangoIntegration()]
-)
+if DEBUG is False:
+    sentry_sdk.init(
+        dsn=os.environ.get('SENTRY_DNS'),
+        integrations=[DjangoIntegration()]
+    )
