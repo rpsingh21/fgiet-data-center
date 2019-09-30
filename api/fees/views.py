@@ -20,15 +20,6 @@ from .serializers import (
 class FeeRegisterAPIView(APIView):
     serializer_class = FeeRegisterFormSerializer
 
-    def get(self, request, id=None):
-        if id:
-            instance = FeeRegister.objects.get(id=id)
-            serializer = FeeSerializer(instance, context={'request': request})
-        else:
-            instance = FeeRegister.objects.all()
-            serializer = FeeSerializer(instance, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
     def post(self, request, format=None):
         serializer = FeeRegisterFormSerializer(
             data=request.data,
