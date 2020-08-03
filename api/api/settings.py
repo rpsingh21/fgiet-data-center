@@ -144,9 +144,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:4200",
     "http://127.0.0.1:4200",
     "http://134.209.150.95",
-    "https://registration.fgiet.in",
-    "10:14:11:222:4200",
-    "10:14:11:222",
+    "https://registration.fgiet.in"
 ]
 
 # AWS SETTINGS
