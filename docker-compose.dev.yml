@@ -5,6 +5,8 @@ services:
     image: postgres:11-alpine
     volumes:
       - database_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
     networks:
       - fgiet-network
   api:
