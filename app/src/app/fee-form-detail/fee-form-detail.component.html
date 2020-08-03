@@ -1,11 +1,21 @@
-<div *ngIf="success_mgs.show" class="alert alert-success rps-alert mt-3 doNotPrint"
-    [ngClass]="{'hide-alert': success_mgs.hide}" role="alert">
+<div
+    *ngIf="success_mgs.show"
+    class="alert alert-success rps-alert mt-3 doNotPrint"
+    [ngClass]="{ 'hide-alert': success_mgs.hide }"
+    role="alert"
+>
     You have successfully submitted your registration form !
 </div>
 <div class="my-card mt-3">
     <div class="border center p-2 mb-3">
-        <img class="pt-1 mx-auto img-fluid" src="https://fgiet.s3.us-east-2.amazonaws.com/media/header.png" alt="fgiet">
-        <br><b class="text-danger">REGISTRATION FORM Of STUDENT (SESSION 2019-2020)</b>
+        <img
+            class="pt-1 mx-auto img-fluid"
+            src="https://fgiet.s3.us-east-2.amazonaws.com/media/header.png"
+            alt="fgiet"
+        />
+        <br /><b class="text-danger"
+            >REGISTRATION FORM Of STUDENT (SESSION 2020-2021)</b
+        >
     </div>
     <table class="table table-bordered">
         <tbody>
@@ -16,16 +26,23 @@
             </tr>
             <tr>
                 <th colspan="4">Form Id</th>
-                <td colspan="10">{{ form_id }} </td>
+                <td colspan="10">{{ form_id }}</td>
                 <td colspan="2" rowspan="5" class="w-25">
-                    <img class="img-fluid" style="width: -webkit-fill-available;"
-                        [src]="data.basic.image? data.basic.image: 'https://fgiet.s3.amazonaws.com/media/passport.jpg'"
-                        alt="user image">
+                    <img
+                        class="img-fluid"
+                        style="width: -webkit-fill-available;"
+                        [src]="
+                            data.basic.image
+                                ? data.basic.image
+                                : 'https://fgiet.s3.amazonaws.com/media/passport.jpg'
+                        "
+                        alt="user image"
+                    />
                 </td>
             </tr>
             <tr>
                 <th colspan="4">Roll No</th>
-                <td colspan="10">{{ data.basic.roll_no }} </td>
+                <td colspan="10">{{ data.basic.roll_no }}</td>
             </tr>
             <tr>
                 <th colspan="4" class="w-18">Name</th>
@@ -37,15 +54,21 @@
             </tr>
             <tr>
                 <th colspan="4">Mother Name</th>
-                <td colspan="10">{{ data.basic. mother_name }}</td>
+                <td colspan="10">{{ data.basic.mother_name }}</td>
             </tr>
             <tr>
                 <th colspan="4">Date of Birth</th>
-                <td colspan="10">{{ data.basic.dob| date }}</td>
+                <td colspan="10">{{ data.basic.dob | date }}</td>
                 <td class="center">
                     <!-- <input type="file" name="image" (change)="onUpload($event)"/> -->
-                    <button class="btn btn-primary doNotPrint" (click)="onPrint()">
-                        <img height="25" src="https://www.fgiet.in/media/img/printer.png">
+                    <button
+                        class="btn btn-primary doNotPrint"
+                        (click)="onPrint()"
+                    >
+                        <img
+                            height="25"
+                            src="https://www.fgiet.in/media/img/printer.png"
+                        />
                         Print Application
                     </button>
                 </td>
@@ -63,7 +86,9 @@
                 <th colspan="2">year</th>
                 <td colspan="6">{{ data.basic.year }}</td>
                 <th colspan="2" class="w-20">Branch</th>
-                <td colspan="6">{{ this.optionsData.branch[data.basic.branch] }}</td>
+                <td colspan="6">
+                    {{ this.optionsData.branch[data.basic.branch] }}
+                </td>
             </tr>
             <tr>
                 <th colspan="2">Gender</th>
@@ -127,11 +152,15 @@
                             </tr>
                             <tr>
                                 <th>Your Marks</th>
-                                <td *ngFor="let semester of data?.semesters">{{ semester.marks }}</td>
+                                <td *ngFor="let semester of data?.semesters">
+                                    {{ semester.marks }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>Total Marks</th>
-                                <td *ngFor="let semester of data?.semesters">{{ semester.total_marks }}</td>
+                                <td *ngFor="let semester of data?.semesters">
+                                    {{ semester.total_marks }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -146,18 +175,28 @@
                 <th colspan="4">Year</th>
                 <td colspan="4">{{ data.fee.year }}</td>
                 <th colspan="4" class="w-20">Branch</th>
-                <td colspan="4">{{ this.optionsData.branch[data.basic.branch] }}</td>
+                <td colspan="4">
+                    {{ this.optionsData.branch[data.basic.branch] }}
+                </td>
             </tr>
             <tr>
                 <th colspan="4">Mode of Payment</th>
                 <td colspan="4">
                     <div class="form-row">
-                        <div [ngClass]="{
-                            'form-group col-md-12': data.fee.mode_of_payment!='CHALLAN',
-                            'form-group col-md-5': data.fee.mode_of_payment=='CHALLAN'}">
+                        <div
+                            [ngClass]="{
+                                'form-group col-md-12':
+                                    data.fee.mode_of_payment != 'CHALLAN',
+                                'form-group col-md-5':
+                                    data.fee.mode_of_payment == 'CHALLAN'
+                            }"
+                        >
                             {{ data.fee.mode_of_payment }}
                         </div>
-                        <div class="form-group col-md-7" *ngIf="data.fee.mode_of_payment=='CHALLAN'">
+                        <div
+                            class="form-group col-md-7"
+                            *ngIf="data.fee.mode_of_payment == 'CHALLAN'"
+                        >
                             {{ data.fee.challan_no }}
                         </div>
                     </div>
@@ -181,14 +220,18 @@
     </table>
     <div class="row px-3 mt-3">
         <p>
-            I <b><i>{{ data.basic.name }}</i></b> hear by declare that above given information are correct to best my
-            knowledge
-            and belief. I will be fully responsible for any discrepancy found in above information.
+            I
+            <b
+                ><i>{{ data.basic.name }}</i></b
+            >
+            hear by declare that above given information are correct to best my
+            knowledge and belief. I will be fully responsible for any
+            discrepancy found in above information.
         </p>
     </div>
     <div class="row m-5 py-3 center">
-        <div class="col"> Signature of Account Officer </div>
-        <div class="col"> Signature of HOD</div>
-        <div class="col"> Signature of Student </div>
+        <div class="col">Signature of Account Officer</div>
+        <div class="col">Signature of HOD</div>
+        <div class="col">Signature of Student</div>
     </div>
 </div>
