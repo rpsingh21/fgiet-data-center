@@ -15,5 +15,5 @@
 Network Trash Folder
 Temporary Items
 .apdisk
-# django-env.env
-docker-compose.dev.yml
+django-env.env
+# docker-compose.dev.yml
