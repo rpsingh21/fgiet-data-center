@@ -8,7 +8,7 @@ export const fee_form = {
         challan_no: "",
         transfer_id: null,
         transfer_date: null,
-        mode_of_payment: null
+        mode_of_payment: null,
     },
     basic: {
         dob: null,
@@ -29,53 +29,53 @@ export const fee_form = {
         father_mobile_no: null,
         mother_mobile_no: "",
         mode_of_admission: null,
-        mode_of_admission_category: null
+        mode_of_admission_category: null,
     },
     academics: [
         {
             text: "HighSchool",
             board: null,
             marks: null,
-            academic_type: "HighSchool"
+            academic_type: "HighSchool",
         },
         {
             text: "Intermediate",
             board: null,
             marks: null,
-            academic_type: "Intermediate"
+            academic_type: "Intermediate",
         },
         {
             text: "Ug or Diploma",
             board: null,
             marks: null,
-            academic_type: "UgOrDiploma"
-        }
+            academic_type: "UgOrDiploma",
+        },
     ],
     semesters: [
         {
             marks: null,
             semester: null,
-            total_marks: null
-        }
-    ]
+            total_marks: null,
+        },
+    ],
 };
 
 export const fee_form_errors = {
     fee: null,
     basic: null,
     academics: null,
-    semesters: null
+    semesters: null,
 };
 
 export const filter_form = {
     roll_no: "",
     form_id: "",
-    session: "2019-20",
+    session: "2020-21",
     status: "",
     branch: "1",
     fee_type: "",
     mode_of_payment: "",
     year: "",
     transfer_date_to: "",
-    transfer_date_from: ""
+    transfer_date_from: "",
 };
