@@ -7,7 +7,7 @@ import { ApiService } from "../../api.service";
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
-    styleUrls: ["./login.component.scss"]
+    styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
     loginForm;
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     ) {
         this.loginForm = this.formBuilder.group({
             username: ["", Validators.required],
-            password: ["", Validators.required]
+            password: ["", Validators.required],
         });
     }
 
@@ -29,9 +29,10 @@ export class LoginComponent implements OnInit {
         return this.loginForm.controls;
     }
 
-    login(value) {
+    login(value: any) {
         this.submitted = true;
-        this.api.post(`login`, value).subscribe(res => {
+        console.log(value);
+        this.api.post(`login/`, value).subscribe((res) => {
             for (let key in res) {
                 localStorage.setItem(key, res[key]);
             }

@@ -19,11 +19,15 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('api/admin/', admin.site.urls),
     path('api/v1/student/', include('students.urls', namespace='students')),
     path('api/v1/fee/', include('fees.urls', namespace='fees')),
-    path('api/v1/login', TokenObtainPairView.as_view(), name='login'),
-    path('api/v1/login/refresh', TokenRefreshView.as_view(), name='refresh'),
+    path('api/v1/login/', TokenObtainPairView.as_view(), name='login'),
+    path('api/v1/login/refresh/', TokenRefreshView.as_view(), name='refresh'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -16,7 +16,7 @@ services:
       - django-env.env
     command: bash -c "python manage.py makemigrations &&
       python manage.py migrate &&
-      gunicorn api.wsgi:application -b 0.0.0.0:8001 --workers 3"
+      gunicorn api.wsgi:application -b 0.0.0.0:8000 --workers 3"
     volumes:
       - ./api:/code
     ports:

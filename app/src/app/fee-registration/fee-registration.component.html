@@ -1,7 +1,13 @@
 <div class="my-card my-5 pb-5">
     <div class="border center mb-3 p-2">
-        <img class="pt-1 mx-auto img-fluid" src="https://fgiet.s3.us-east-2.amazonaws.com/media/header.png" alt="fgiet">
-        <br><b class="text-danger">REGISTRATION FORM Of STUDENT (SESSION 2020-2021)</b>
+        <img
+            class="pt-1 mx-auto img-fluid"
+            src="/assets/img/logo.png"
+            alt="fgiet"
+        />
+        <br /><b class="text-danger"
+            >REGISTRATION FORM Of STUDENT (SESSION 2020-2021)</b
+        >
     </div>
     <table class="table table-bordered">
         <tbody>
@@ -13,21 +19,37 @@
             <tr>
                 <th colspan="4">Roll No *</th>
                 <td colspan="10">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.roll_no" disabled>
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.roll_no"
+                        disabled
+                    />
                     <small *ngIf="errors.basic?.roll_no" class="text-danger">
                         {{ errors.basic.roll_no }}
                     </small>
                 </td>
                 <td colspan="2" rowspan="5" class="w-25">
-                    <img class="img-fluid" style="width: -webkit-fill-available;"
-                        [src]="data.basic.image ? data.basic.image:'https://fgiet.s3.amazonaws.com/media/passport.jpg'"
-                        alt="user image">
+                    <img
+                        class="img-fluid"
+                        style="width: -webkit-fill-available;"
+                        [src]="
+                            data.basic.image
+                                ? data.basic.image
+                                : '/assets/img/passport.jpeg'
+                        "
+                        alt="user image"
+                    />
                 </td>
             </tr>
             <tr>
                 <th colspan="4" class="w-18">Name *</th>
                 <td colspan="10">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.name">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.name"
+                    />
                     <small *ngIf="errors.basic?.name" class="text-danger">
                         {{ errors.basic.name }}
                     </small>
@@ -36,8 +58,15 @@
             <tr>
                 <th colspan="4">Father Name *</th>
                 <td colspan="10">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.father_name">
-                    <small *ngIf="errors.basic?.father_name" class="text-danger">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.father_name"
+                    />
+                    <small
+                        *ngIf="errors.basic?.father_name"
+                        class="text-danger"
+                    >
                         {{ errors.basic.father_name }}
                     </small>
                 </td>
@@ -45,8 +74,15 @@
             <tr>
                 <th colspan="4">Mother Name *</th>
                 <td colspan="10">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.mother_name">
-                    <small *ngIf="errors.basic?.mother_name" class="text-danger">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.mother_name"
+                    />
+                    <small
+                        *ngIf="errors.basic?.mother_name"
+                        class="text-danger"
+                    >
                         {{ errors.basic.mother_name }}
                     </small>
                 </td>
@@ -54,7 +90,11 @@
             <tr>
                 <th colspan="4">Address *</th>
                 <td colspan="10">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.address">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.address"
+                    />
                     <small *ngIf="errors.basic?.address" class="text-danger">
                         {{ errors.basic.address }}
                     </small>
@@ -63,14 +103,24 @@
             <tr>
                 <th colspan="4">Date of Birth *</th>
                 <td colspan="10">
-                    <input type="date" class="form-control" [(ngModel)]="data.basic.dob">
+                    <input
+                        type="date"
+                        class="form-control"
+                        [(ngModel)]="data.basic.dob"
+                    />
                     <small *ngIf="errors.basic?.dob" class="text-danger">
                         {{ errors.basic.dob }}
                     </small>
                 </td>
                 <td>
-                    <input *ngIf="!spinner.image" type="file" name="image" class="form-control"
-                        (change)="onUpload($event)" accept="image/jpeg" />
+                    <input
+                        *ngIf="!spinner.image"
+                        type="file"
+                        name="image"
+                        class="form-control"
+                        (change)="onUpload($event)"
+                        accept="image/jpeg"
+                    />
                     <div class="center" *ngIf="spinner.image">
                         <div class="spinner-border text-primary" role="status">
                             <span class="sr-only">Loading...</span>
@@ -89,9 +139,16 @@
             <tr>
                 <th colspan="2" class="w-20">Branch *</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.basic.branch"
-                        (change)="change_semester_table()">
-                        <option *ngFor="let key of objectKeys(optionsData.branch)" [value]="key">
+                    <select
+                        *ngIf="optionsData?.branch"
+                        class="form-control"
+                        [(ngModel)]="data.basic.branch"
+                        (change)="change_semester_table()"
+                    >
+                        <option
+                            *ngFor="let key of objectKeys(optionsData.branch)"
+                            [value]="key"
+                        >
                             {{ optionsData.branch[key] }}
                         </option>
                     </select>
@@ -101,9 +158,16 @@
                 </td>
                 <th colspan="2">Year *</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.year" class="form-control" [(ngModel)]="data.basic.year"
-                        (change)="change_semester_table()">
-                        <option *ngFor="let key of optionsData.year" [value]="key">
+                    <select
+                        *ngIf="optionsData?.year"
+                        class="form-control"
+                        [(ngModel)]="data.basic.year"
+                        (change)="change_semester_table()"
+                    >
+                        <option
+                            *ngFor="let key of optionsData.year"
+                            [value]="key"
+                        >
                             {{ key }}
                         </option>
                     </select>
@@ -115,8 +179,15 @@
             <tr>
                 <th colspan="2">Gender *</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.gender" class="form-control" [(ngModel)]="data.basic.gender">
-                        <option *ngFor="let key of objectKeys(optionsData.gender)" [value]="key">
+                    <select
+                        *ngIf="optionsData?.gender"
+                        class="form-control"
+                        [(ngModel)]="data.basic.gender"
+                    >
+                        <option
+                            *ngFor="let key of objectKeys(optionsData.gender)"
+                            [value]="key"
+                        >
                             {{ optionsData.gender[key] }}
                         </option>
                     </select>
@@ -126,8 +197,15 @@
                 </td>
                 <th colspan="2">Category *</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.category" class="form-control" [(ngModel)]="data.basic.category">
-                        <option *ngFor="let key of objectKeys(optionsData.category)" [value]="key">
+                    <select
+                        *ngIf="optionsData?.category"
+                        class="form-control"
+                        [(ngModel)]="data.basic.category"
+                    >
+                        <option
+                            *ngFor="let key of objectKeys(optionsData.category)"
+                            [value]="key"
+                        >
                             {{ optionsData.category[key] }}
                         </option>
                     </select>
@@ -139,11 +217,19 @@
             <tr>
                 <th colspan="2">Sub Category</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.sub_category">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.sub_category"
+                    />
                 </td>
                 <th colspan="2">Mobile No *</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.mobile_no">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.mobile_no"
+                    />
                     <small *ngIf="errors.basic?.mobile_no" class="text-danger">
                         {{ errors.basic.mobile_no }}
                     </small>
@@ -152,15 +238,29 @@
             <tr>
                 <th colspan="2">Father Mobile No *</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.father_mobile_no">
-                    <small *ngIf="errors.basic?.father_mobile_no" class="text-danger">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.father_mobile_no"
+                    />
+                    <small
+                        *ngIf="errors.basic?.father_mobile_no"
+                        class="text-danger"
+                    >
                         {{ errors.basic.father_mobile_no }}
                     </small>
                 </td>
                 <th colspan="2">Mother Mobile No</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.mother_mobile_no">
-                    <small *ngIf="errors.basic?.mother_mobile_no" class="text-danger">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.mother_mobile_no"
+                    />
+                    <small
+                        *ngIf="errors.basic?.mother_mobile_no"
+                        class="text-danger"
+                    >
                         {{ errors.basic.mother_mobile_no }}
                     </small>
                 </td>
@@ -168,14 +268,23 @@
             <tr>
                 <th colspan="2">Email Id *</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.email" disabled>
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.email"
+                        disabled
+                    />
                     <small *ngIf="errors.basic?.email" class="text-danger">
                         {{ errors.basic.email }}
                     </small>
                 </td>
                 <th colspan="2">Addhar No *</th>
                 <td colspan="6">
-                    <input type="text" class="form-control" [(ngModel)]="data.basic.addhar_no">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="data.basic.addhar_no"
+                    />
                     <small *ngIf="errors.basic?.addhar_no" class="text-danger">
                         {{ errors.basic.addhar_no }}
                     </small>
@@ -184,25 +293,52 @@
             <tr>
                 <th colspan="2">Mode of Admission *</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.mode_of_admission" class="form-control"
-                        [(ngModel)]="data.basic.mode_of_admission">
-                        <option *ngFor="let key of objectKeys(optionsData.mode_of_admission)" [value]="key">
+                    <select
+                        *ngIf="optionsData?.mode_of_admission"
+                        class="form-control"
+                        [(ngModel)]="data.basic.mode_of_admission"
+                    >
+                        <option
+                            *ngFor="
+                                let key of objectKeys(
+                                    optionsData.mode_of_admission
+                                )
+                            "
+                            [value]="key"
+                        >
                             {{ optionsData.mode_of_admission[key] }}
                         </option>
                     </select>
-                    <small *ngIf="errors.basic?.mode_of_admission" class="text-danger">
+                    <small
+                        *ngIf="errors.basic?.mode_of_admission"
+                        class="text-danger"
+                    >
                         {{ errors.basic.mode_of_admission }}
                     </small>
                 </td>
                 <th colspan="2">Admission Category *</th>
                 <td colspan="6">
-                    <select *ngIf="optionsData?.admission_category" class="form-control"
-                        [(ngModel)]="data.basic.mode_of_admission_category" (change)="change_semester_table()">
-                        <option *ngFor="let key of objectKeys(optionsData.admission_category)" [value]="key">
+                    <select
+                        *ngIf="optionsData?.admission_category"
+                        class="form-control"
+                        [(ngModel)]="data.basic.mode_of_admission_category"
+                        (change)="change_semester_table()"
+                    >
+                        <option
+                            *ngFor="
+                                let key of objectKeys(
+                                    optionsData.admission_category
+                                )
+                            "
+                            [value]="key"
+                        >
                             {{ optionsData.admission_category[key] }}
                         </option>
                     </select>
-                    <small *ngIf="errors.basic?.admission_category" class="text-danger">
+                    <small
+                        *ngIf="errors.basic?.admission_category"
+                        class="text-danger"
+                    >
                         {{ errors.basic.admission_category }}
                     </small>
                 </td>
@@ -217,17 +353,31 @@
                 <th colspan="6">Board</th>
                 <th colspan="6">Marks (%)</th>
             </tr>
-            <tr *ngFor="let item of data.academics; index as i;">
+            <tr *ngFor="let item of data.academics; index as i">
                 <th colspan="4">{{ item.text }}</th>
                 <td colspan="6">
-                    <input [(ngModel)]="item.board" type="text" class="form-control">
-                    <small *ngIf="errors.academics && errors.academics[i]?.board" class="text-danger">
+                    <input
+                        [(ngModel)]="item.board"
+                        type="text"
+                        class="form-control"
+                    />
+                    <small
+                        *ngIf="errors.academics && errors.academics[i]?.board"
+                        class="text-danger"
+                    >
                         {{ errors.academics[i].board }}
                     </small>
                 </td>
                 <td colspan="6">
-                    <input [(ngModel)]="item.marks" type="text" class="form-control">
-                    <small *ngIf="errors.academics && errors.academics[i]?.marks" class="text-danger">
+                    <input
+                        [(ngModel)]="item.marks"
+                        type="text"
+                        class="form-control"
+                    />
+                    <small
+                        *ngIf="errors.academics && errors.academics[i]?.marks"
+                        class="text-danger"
+                    >
                         {{ errors.academics[i].marks }}
                     </small>
                 </td>
@@ -249,19 +399,48 @@
                             </tr>
                             <tr>
                                 <th>Your Marks</th>
-                                <td *ngFor="let semester of data.semesters; index as i">
-                                    <input [(ngModel)]="semester.marks" type="text" class="form-control">
-                                    <small *ngIf="errors.semesters && errors.semesters[i]?.marks" class="text-danger">
+                                <td
+                                    *ngFor="
+                                        let semester of data.semesters;
+                                        index as i
+                                    "
+                                >
+                                    <input
+                                        [(ngModel)]="semester.marks"
+                                        type="text"
+                                        class="form-control"
+                                    />
+                                    <small
+                                        *ngIf="
+                                            errors.semesters &&
+                                            errors.semesters[i]?.marks
+                                        "
+                                        class="text-danger"
+                                    >
                                         {{ errors.semesters[i].marks }}
                                     </small>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Total Marks</th>
-                                <td *ngFor="let semester of data.semesters; index as i">
-                                    <input [(ngModel)]="semester.total_marks" type="text" class="form-control">
-                                    <small *ngIf="errors.semesters && errors.semesters[i]?.total_marks"
-                                        class="text-danger">
+                                <td
+                                    *ngFor="
+                                        let semester of data.semesters;
+                                        index as i
+                                    "
+                                >
+                                    <input
+                                        [(ngModel)]="semester.total_marks"
+                                        type="text"
+                                        class="form-control"
+                                    />
+                                    <small
+                                        *ngIf="
+                                            errors.semesters &&
+                                            errors.semesters[i]?.total_marks
+                                        "
+                                        class="text-danger"
+                                    >
                                         {{ errors.semesters[i].total_marks }}
                                     </small>
                                 </td>
@@ -278,8 +457,15 @@
             <tr>
                 <th colspan="4">Year *</th>
                 <td colspan="4">
-                    <select *ngIf="optionsData?.year" class="form-control" [(ngModel)]="data.fee.year">
-                        <option *ngFor="let key of optionsData.year" [value]="key">
+                    <select
+                        *ngIf="optionsData?.year"
+                        class="form-control"
+                        [(ngModel)]="data.fee.year"
+                    >
+                        <option
+                            *ngFor="let key of optionsData.year"
+                            [value]="key"
+                        >
                             {{ key }}
                         </option>
                     </select>
@@ -289,8 +475,15 @@
                 </td>
                 <th colspan="4" class="w-20">Branch *</th>
                 <td colspan="4">
-                    <select *ngIf="optionsData?.branch" class="form-control" [(ngModel)]="data.fee.branch">
-                        <option *ngFor="let key of objectKeys(optionsData.branch)" [value]="key">
+                    <select
+                        *ngIf="optionsData?.branch"
+                        class="form-control"
+                        [(ngModel)]="data.fee.branch"
+                    >
+                        <option
+                            *ngFor="let key of objectKeys(optionsData.branch)"
+                            [value]="key"
+                        >
                             {{ optionsData.branch[key] }}
                         </option>
                     </select>
@@ -303,28 +496,57 @@
                 <th colspan="4">Mode of Payment *</th>
                 <td colspan="4">
                     <div class="form-row">
-                        <div [ngClass]="{
-                            'form-group col-md-12': data.fee.mode_of_payment!='CHALLAN',
-                            'form-group col-md-5': data.fee.mode_of_payment=='CHALLAN'}">
-                            <select *ngIf="optionsData?.mode_of_payment" class="form-control"
-                                [(ngModel)]="data.fee.mode_of_payment">
-                                <option *ngFor="let key of objectKeys(optionsData.mode_of_payment)" [value]="key">
+                        <div
+                            [ngClass]="{
+                                'form-group col-md-12':
+                                    data.fee.mode_of_payment != 'CHALLAN',
+                                'form-group col-md-5':
+                                    data.fee.mode_of_payment == 'CHALLAN'
+                            }"
+                        >
+                            <select
+                                *ngIf="optionsData?.mode_of_payment"
+                                class="form-control"
+                                [(ngModel)]="data.fee.mode_of_payment"
+                            >
+                                <option
+                                    *ngFor="
+                                        let key of objectKeys(
+                                            optionsData.mode_of_payment
+                                        )
+                                    "
+                                    [value]="key"
+                                >
                                     {{ optionsData.mode_of_payment[key] }}
                                 </option>
                             </select>
                         </div>
-                        <div class="form-group col-md-7" *ngIf="data.fee.mode_of_payment=='CHALLAN'">
-                            <input [(ngModel)]="data.fee.challan_no" type="text" class="form-control"
-                                placeholder="Challan no">
+                        <div
+                            class="form-group col-md-7"
+                            *ngIf="data.fee.mode_of_payment == 'CHALLAN'"
+                        >
+                            <input
+                                [(ngModel)]="data.fee.challan_no"
+                                type="text"
+                                class="form-control"
+                                placeholder="Challan no"
+                            />
                         </div>
                     </div>
-                    <small *ngIf="errors.fee?.mode_of_payment" class="text-danger">
+                    <small
+                        *ngIf="errors.fee?.mode_of_payment"
+                        class="text-danger"
+                    >
                         {{ errors.fee.mode_of_payment }}
                     </small>
                 </td>
                 <th colspan="4">Amount *</th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.amount" type="text" class="form-control">
+                    <input
+                        [(ngModel)]="data.fee.amount"
+                        type="text"
+                        class="form-control"
+                    />
                     <small *ngIf="errors.fee?.amount" class="text-danger">
                         {{ errors.fee.amount }}
                     </small>
@@ -333,8 +555,15 @@
             <tr>
                 <th colspan="4">Fee Type *</th>
                 <td colspan="4">
-                    <select *ngIf="optionsData?.fee_type" class="form-control" [(ngModel)]="data.fee.fee_type">
-                        <option *ngFor="let key of objectKeys(optionsData.fee_type)" [value]="key">
+                    <select
+                        *ngIf="optionsData?.fee_type"
+                        class="form-control"
+                        [(ngModel)]="data.fee.fee_type"
+                    >
+                        <option
+                            *ngFor="let key of objectKeys(optionsData.fee_type)"
+                            [value]="key"
+                        >
                             {{ optionsData.fee_type[key] }}
                         </option>
                     </select>
@@ -344,24 +573,46 @@
                 </td>
                 <th colspan="4">Total Fee *</th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.total_fee" type="text" class="form-control">
+                    <input
+                        [(ngModel)]="data.fee.total_fee"
+                        type="text"
+                        class="form-control"
+                    />
                     <small *ngIf="errors.fee?.total_fee" class="text-danger">
                         {{ errors.fee.total_fee }}
                     </small>
                 </td>
             </tr>
             <tr>
-                <th colspan="4">{{ data.fee.mode_of_payment=='CASH' ? 'Fee Receipt No':'Transfer Id'}} *</th>
+                <th colspan="4">
+                    {{
+                        data.fee.mode_of_payment == "CASH"
+                            ? "Fee Receipt No"
+                            : "Transfer Id"
+                    }}
+                    *
+                </th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.transfer_id" type="text" class="form-control">
+                    <input
+                        [(ngModel)]="data.fee.transfer_id"
+                        type="text"
+                        class="form-control"
+                    />
                     <small *ngIf="errors.fee?.transfer_id" class="text-danger">
                         {{ errors.fee.transfer_id }}
                     </small>
                 </td>
                 <th colspan="4">Date *</th>
                 <td colspan="4">
-                    <input [(ngModel)]="data.fee.transfer_date" type="date" class="form-control">
-                    <small *ngIf="errors.fee?.transfer_date" class="text-danger">
+                    <input
+                        [(ngModel)]="data.fee.transfer_date"
+                        type="date"
+                        class="form-control"
+                    />
+                    <small
+                        *ngIf="errors.fee?.transfer_date"
+                        class="text-danger"
+                    >
                         {{ errors.fee.transfer_date }}
                     </small>
                 </td>
@@ -369,10 +620,18 @@
         </tbody>
     </table>
     <div class="center">
-        <button *ngIf="!spinner.form" (click)="onSumitForm()" class="btn btn-primary">
+        <button
+            *ngIf="!spinner.form"
+            (click)="onSumitForm()"
+            class="btn btn-primary"
+        >
             <b class="mx-5">Submit</b>
         </button>
-        <div *ngIf="spinner.form" class="spinner-border text-primary" role="status">
+        <div
+            *ngIf="spinner.form"
+            class="spinner-border text-primary"
+            role="status"
+        >
             <span class="sr-only">Loading...</span>
         </div>
     </div>

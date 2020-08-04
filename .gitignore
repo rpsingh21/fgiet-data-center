@@ -17,3 +17,6 @@ Temporary Items
 .apdisk
 django-env.env
 # docker-compose.dev.yml
+static_cdn
+media_cdn
+db-without-auth.json

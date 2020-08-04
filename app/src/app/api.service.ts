@@ -11,25 +11,26 @@ export class ApiService {
 
     getAuthHeader() {
         return new HttpHeaders({
-            Authorization: "Bearer " + localStorage.getItem("access")
+            Authorization: "Bearer " + localStorage.getItem("access"),
         });
     }
 
-    get(end_point) {
+    get(end_point: string) {
         return this.client.get(this.apiUrl + end_point);
     }
 
-    post(end_point, data) {
+    post(end_point: string, data: any) {
+        console.log(end_point, this.apiUrl);
         return this.client.post(this.apiUrl + end_point, data);
     }
 
-    put(end_point, data) {
+    put(end_point: string, data: any) {
         return this.client.put(this.apiUrl + end_point, data);
     }
 
-    getx(end_point) {
+    getx(end_point: string) {
         return this.client.get(this.apiUrl + end_point, {
-            headers: this.getAuthHeader()
+            headers: this.getAuthHeader(),
         });
     }
 }

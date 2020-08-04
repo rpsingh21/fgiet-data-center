@@ -10,7 +10,7 @@
     <div class="border center p-2 mb-3">
         <img
             class="pt-1 mx-auto img-fluid"
-            src="https://fgiet.s3.us-east-2.amazonaws.com/media/header.png"
+            src="/assets/img/logo.png"
             alt="fgiet"
         />
         <br /><b class="text-danger"
@@ -34,7 +34,7 @@
                         [src]="
                             data.basic.image
                                 ? data.basic.image
-                                : 'https://fgiet.s3.amazonaws.com/media/passport.jpg'
+                                : '/assets/img/passport.jpeg'
                         "
                         alt="user image"
                     />
@@ -65,10 +65,7 @@
                         class="btn btn-primary doNotPrint"
                         (click)="onPrint()"
                     >
-                        <img
-                            height="25"
-                            src="https://www.fgiet.in/media/img/printer.png"
-                        />
+                        <img height="25" src="/assets/img/printer.png" />
                         Print Application
                     </button>
                 </td>

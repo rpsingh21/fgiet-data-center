@@ -161,22 +161,31 @@ AWS_QUERYSTRING_AUTH = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
-STATICFILES_STORAGE = 'api.storage_backends.StaticRootS3BotoStorage'
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+# STATICFILES_STORAGE = 'api.storage_backends.StaticRootS3BotoStorage'
 
-AWS_MEDIA_LOCATION = 'media'
-MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
-MEDIA_ROOT = MEDIA_URL
-DEFAULT_FILE_STORAGE = 'api.storage_backends.MediaRootS3BotoStorage'
+# AWS_MEDIA_LOCATION = 'media'
+# MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
+# MEDIA_ROOT = MEDIA_URL
+# DEFAULT_FILE_STORAGE = 'api.storage_backends.MediaRootS3BotoStorage'
 
-two_months = datetime.timedelta(days=61)
-date_two_months_later = datetime.date.today() + two_months
-expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
+# two_months = datetime.timedelta(days=61)
+# date_two_months_later = datetime.date.today() + two_months
+# expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
 
-AWS_HEADERS = {
-    'Expires': expires,
-    'Cache-Control': 'max-age=%d' % (int(two_months.total_seconds()), ),
-}
+# AWS_HEADERS = {
+#     'Expires': expires,
+#     'Cache-Control': 'max-age=%d' % (int(two_months.total_seconds()), ),
+# }
+
+STATIC_URL = '/api/v1/static/'
+
+STATICFILES_DIRS = []
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
+
+MEDIA_URL = '/api/v1/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 # max file upload size default set 100KB
 MAX_UPLOAD_SIZE = os.environ.get('MAX_UPLOAD_SIZE', 102400)
